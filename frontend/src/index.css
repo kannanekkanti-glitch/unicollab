@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-[#fafbfc] text-slate-900 antialiased dark:bg-[#030712] dark:text-slate-100 font-sans;
+    @apply bg-[#faf8f5] text-stone-900 antialiased dark:bg-[#0c0a09] dark:text-stone-100 font-sans;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
@@ -14,52 +14,52 @@
 }
 
 @layer utilities {
-  /* Bento & Luxury Obsidian Glassmorphism */
+  /* Bento & Luxury Royal Brown/Gold Glassmorphism */
   .bento-card {
-    @apply bg-white/85 dark:bg-[#080d1a]/80 backdrop-blur-2xl border border-slate-200/80 dark:border-white/[0.08] shadow-xl shadow-slate-900/5 dark:shadow-2xl dark:shadow-black/60 rounded-3xl relative overflow-hidden transition-all duration-300;
+    @apply bg-white/85 dark:bg-[#150f0b]/80 backdrop-blur-2xl border border-stone-200/80 dark:border-amber-500/[0.12] shadow-xl shadow-stone-950/5 dark:shadow-2xl dark:shadow-black/70 rounded-3xl relative overflow-hidden transition-all duration-300;
   }
 
   .bento-card-hover {
-    @apply hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-brand-500/10 hover:border-brand-500/30 dark:hover:border-brand-400/40;
+    @apply hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-brand-500/15 hover:border-brand-500/40 dark:hover:border-brand-400/40;
   }
 
   .glass-card {
-    @apply bg-white/80 dark:bg-[#080d1a]/80 backdrop-blur-xl border border-slate-200/80 dark:border-white/[0.08] shadow-lg shadow-slate-900/5 dark:shadow-black/60;
+    @apply bg-white/80 dark:bg-[#150f0b]/80 backdrop-blur-xl border border-stone-200/80 dark:border-amber-500/[0.12] shadow-lg shadow-stone-950/5 dark:shadow-black/60;
   }
 
   .glass-card-hover {
-    @apply transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-brand-500/10 hover:border-brand-500/30 dark:hover:border-brand-400/40;
+    @apply transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-brand-500/15 hover:border-brand-500/40 dark:hover:border-brand-400/40;
   }
 
   .glass-panel {
-    @apply bg-white/75 dark:bg-[#060a16]/80 backdrop-blur-2xl border border-slate-200/70 dark:border-white/[0.08];
+    @apply bg-white/75 dark:bg-[#100b07]/80 backdrop-blur-2xl border border-stone-200/70 dark:border-amber-500/[0.12];
   }
 
-  /* Linear / Apple Style Headline Gradient */
+  /* Royal / Linear Headline Gradient */
   .headline-gradient {
-    @apply bg-gradient-to-b from-slate-950 via-slate-800 to-slate-600 dark:from-white dark:via-white/95 dark:to-white/60 bg-clip-text text-transparent;
+    @apply bg-gradient-to-b from-stone-950 via-stone-800 to-stone-600 dark:from-white dark:via-amber-50/95 dark:to-amber-200/60 bg-clip-text text-transparent;
   }
 
-  /* Luxury Multi-Stop Gradient Text */
+  /* Metallic Champagne Gold Text */
   .luxury-gradient-text {
-    @apply bg-gradient-to-r from-brand-600 via-indigo-500 to-violet-600 dark:from-brand-300 dark:via-indigo-300 dark:to-violet-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-700 dark:from-[#fce3a2] dark:via-[#e5b758] dark:to-[#c59128] bg-clip-text text-transparent;
   }
 
   .luxury-gradient-gold {
-    @apply bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-amber-500 via-yellow-300 to-amber-600 bg-clip-text text-transparent;
   }
 
-  /* Overhead Spotlight Background Beam */
+  /* Overhead Spotlight Background Beam (Warm Champagne & Cognac) */
   .spotlight-beam {
     background-image: radial-gradient(
       ellipse 80% 50% at 50% -20%,
-      rgba(99, 102, 241, 0.22),
-      rgba(139, 92, 246, 0.12) 40%,
+      rgba(202, 158, 67, 0.22),
+      rgba(143, 98, 62, 0.12) 40%,
       transparent 70%
     );
   }
 
-  /* Specular Highlight Top Edge */
+  /* Specular Highlight Top Edge (Gilded Gold) */
   .specular-top {
     position: relative;
   }
@@ -70,7 +70,7 @@
     left: 10%;
     right: 10%;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    background: linear-gradient(90deg, transparent, rgba(234, 179, 42, 0.45), transparent);
   }
 
   /* Shimmer CTA Button Effect */
@@ -89,14 +89,14 @@
     background: linear-gradient(
       60deg,
       transparent 30%,
-      rgba(255, 255, 255, 0.25) 50%,
+      rgba(255, 255, 255, 0.35) 50%,
       transparent 70%
     );
     transform: rotate(30deg) translateX(-100%);
     animation: shimmer-swipe 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Holographic / Verified Badge Glow */
+  /* Gilded / Verified Badge Glow */
   .verified-badge-glow {
     position: relative;
   }
@@ -105,10 +105,10 @@
     position: absolute;
     inset: -2px;
     border-radius: inherit;
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.4), rgba(99, 102, 241, 0.3));
+    background: linear-gradient(135deg, rgba(234, 179, 42, 0.5), rgba(186, 131, 36, 0.35));
     z-index: -1;
     filter: blur(4px);
-    opacity: 0.7;
+    opacity: 0.8;
   }
 }
 

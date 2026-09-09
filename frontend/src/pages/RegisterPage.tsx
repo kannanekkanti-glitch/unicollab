@@ -69,17 +69,17 @@ export const RegisterPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen py-12 px-4 flex items-center justify-center bg-[#fafbfc] dark:bg-[#030712] relative overflow-hidden">
+    <div className="min-h-screen py-12 px-4 flex items-center justify-center bg-[#faf8f5] dark:bg-[#0c0a09] relative overflow-hidden">
       <div className="absolute inset-0 spotlight-beam pointer-events-none" />
-      <div className="w-full max-w-xl p-8 sm:p-10 rounded-3xl bg-white/80 dark:bg-[#080d1a]/85 backdrop-blur-2xl border border-slate-200/80 dark:border-white/[0.08] shadow-2xl shadow-slate-900/5 dark:shadow-black/70 space-y-6 relative specular-top z-10">
+      <div className="w-full max-w-xl p-8 sm:p-10 rounded-3xl bg-white/80 dark:bg-[#150f0b]/85 backdrop-blur-2xl border border-stone-200/80 dark:border-amber-500/[0.12] shadow-2xl shadow-stone-950/5 dark:shadow-black/70 space-y-6 relative specular-top z-10">
         <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-600 via-indigo-600 to-violet-600 text-white font-black text-2xl mx-auto flex items-center justify-center shadow-lg shadow-brand-500/25 mb-1">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-600 via-yellow-500 to-amber-700 text-stone-950 font-black text-2xl mx-auto flex items-center justify-center shadow-lg shadow-amber-500/25 mb-1">
             U
           </div>
-          <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white font-display">
+          <h2 className="text-2xl font-black tracking-tight text-stone-900 dark:text-white font-display">
             Create Verified Student Account
           </h2>
-          <p className="text-xs text-slate-500 dark:text-slate-400">
+          <p className="text-xs text-stone-500 dark:text-stone-400">
             Join your campus circle and collaborate across universities
           </p>
         </div>
@@ -242,16 +242,16 @@ export const RegisterPage: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 rounded-xl bg-gradient-to-r from-brand-600 via-indigo-600 to-violet-600 hover:from-brand-500 hover:to-violet-500 text-white font-semibold text-xs shadow-lg shadow-brand-500/20 hover:shadow-brand-500/35 transition-all duration-200 disabled:opacity-50 flex items-center justify-center gap-2 group cursor-pointer"
+            className="w-full py-2.5 rounded-xl bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 hover:from-amber-400 hover:to-yellow-300 text-stone-950 font-black text-xs shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 transition-all duration-200 disabled:opacity-50 flex items-center justify-center gap-2 group cursor-pointer"
           >
             <span>{loading ? 'Creating Student Account...' : 'Continue to OTP Verification'}</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
           </button>
         </form>
 
-        <p className="text-center text-xs text-slate-500">
+        <p className="text-center text-xs text-stone-500 dark:text-stone-400">
           Already registered?{' '}
-          <Link to="/login" className="font-semibold text-brand-600 hover:underline">
+          <Link to="/login" className="font-bold text-amber-600 dark:text-amber-400 hover:underline">
             Sign in
           </Link>
         </p>

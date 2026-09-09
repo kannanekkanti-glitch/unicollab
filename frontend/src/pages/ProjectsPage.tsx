@@ -113,15 +113,15 @@ export const ProjectsPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header Banner */}
-      <div className="p-7 rounded-3xl bg-gradient-to-r from-brand-600 via-indigo-600 to-violet-600 text-white shadow-xl shadow-brand-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="p-7 rounded-3xl bg-gradient-to-r from-amber-700 via-brown-800 to-amber-900 text-white shadow-xl shadow-amber-950/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="space-y-1.5 relative z-10">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md text-xs font-bold border border-white/20">
             <Sparkles className="w-3.5 h-3.5 text-amber-300" />
             <span>Campus Innovation Hub</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-black tracking-tight">Student Projects & Collaboration</h2>
-          <p className="text-xs sm:text-sm text-brand-100 max-w-xl font-normal leading-relaxed">
+          <h2 className="text-2xl sm:text-3xl font-black tracking-tight font-display">Student Projects & Collaboration</h2>
+          <p className="text-xs sm:text-sm text-amber-100/90 max-w-xl font-normal leading-relaxed">
             Explore active capstones, research endeavors, and hackathon prototypes built by students. Join open teams or list your own project.
           </p>
         </div>
@@ -129,7 +129,7 @@ export const ProjectsPage: React.FC = () => {
         {user && (
           <button
             onClick={() => setShowCreateModal(true)}
-            className="luxury-shimmer-btn px-5 py-3 rounded-2xl bg-white text-brand-700 hover:bg-brand-50 font-extrabold text-xs shadow-lg transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 flex-shrink-0 relative z-10 cursor-pointer"
+            className="luxury-shimmer-btn px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 text-stone-950 font-black text-xs shadow-lg transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 flex-shrink-0 relative z-10 cursor-pointer"
           >
             <Plus className="w-4 h-4" />
             <span>List Your Project</span>
@@ -286,7 +286,7 @@ export const ProjectsPage: React.FC = () => {
                           setDesiredRole(openRolesList[0] || 'Contributor');
                           setShowApplyModal(true);
                         }}
-                        className="luxury-shimmer-btn px-4 py-2 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold text-xs shadow-md shadow-brand-500/20 transition-all duration-200 hover:scale-105 cursor-pointer"
+                        className="luxury-shimmer-btn px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 text-stone-950 font-black text-xs shadow-md shadow-amber-500/20 transition-all duration-200 hover:scale-105 cursor-pointer"
                       >
                         Apply to Join
                       </button>

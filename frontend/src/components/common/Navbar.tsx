@@ -49,23 +49,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCreatePost }) => {
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-white/80 dark:bg-[#030712]/80 backdrop-blur-2xl border-b border-slate-200/80 dark:border-white/[0.08] shadow-sm shadow-black/5 transition-colors">
+    <header className="sticky top-0 z-40 bg-white/80 dark:bg-[#0c0a09]/85 backdrop-blur-2xl border-b border-stone-200/80 dark:border-amber-500/[0.12] shadow-sm shadow-black/5 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         {/* Logo & Brand */}
         <div className="flex items-center gap-3">
           <Link to={user ? "/feed" : "/"} className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 via-indigo-600 to-violet-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-brand-500/25 group-hover:scale-105 group-hover:shadow-brand-500/40 transition-all duration-300">
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-600 via-yellow-500 to-amber-700 flex items-center justify-center text-stone-950 font-black text-xl shadow-lg shadow-amber-500/30 group-hover:scale-105 group-hover:shadow-amber-500/45 transition-all duration-300">
               U
             </div>
             <div>
-              <span className="font-black text-xl tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
+              <span className="font-black text-xl tracking-tight text-stone-900 dark:text-white flex items-center gap-1.5 font-display">
                 UniCollab
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-brand-500/10 text-brand-600 dark:text-brand-400 border border-brand-500/20">
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/25">
                   Campus
                 </span>
               </span>
-              <p className="text-[10px] text-slate-500 dark:text-slate-400 font-medium -mt-1 flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse" />
+              <p className="text-[10px] text-stone-500 dark:text-stone-400 font-medium -mt-1 flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 inline-block animate-pulse" />
                 Verified Student Network
               </p>
             </div>
@@ -75,13 +75,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCreatePost }) => {
         {/* Global Search Bar */}
         <div className="flex-1 max-w-md hidden md:block">
           <form onSubmit={handleSearchSubmit} className="relative group">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-brand-500 transition-colors" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400 group-focus-within:text-brand-500 transition-colors" />
             <input
               type="text"
               placeholder="Search posts, teammates, hackathons, fests..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-slate-100/90 dark:bg-slate-800/60 border border-transparent focus:border-brand-500/50 focus:ring-2 focus:ring-brand-500/20 rounded-2xl focus:bg-white dark:focus:bg-slate-900 focus:outline-none transition-all duration-300 placeholder:text-slate-400 shadow-inner"
+              className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-stone-100/90 dark:bg-[#150f0b]/90 border border-transparent dark:border-amber-500/[0.1] focus:border-brand-500/50 focus:ring-2 focus:ring-brand-500/20 rounded-2xl focus:bg-white dark:focus:bg-[#1c140f] focus:outline-none transition-all duration-300 placeholder:text-stone-400 shadow-inner text-stone-900 dark:text-white"
             />
           </form>
         </div>
@@ -147,7 +147,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCreatePost }) => {
               {onOpenCreatePost && (
                 <button
                   onClick={onOpenCreatePost}
-                  className="luxury-shimmer-btn hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white shadow-md shadow-brand-500/25 transition-all duration-300 hover:scale-105"
+                  className="luxury-shimmer-btn hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-black bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 hover:from-amber-400 hover:to-yellow-300 text-stone-950 shadow-md shadow-amber-500/25 transition-all duration-300 hover:scale-105 cursor-pointer"
                 >
                   <PlusCircle className="w-4 h-4" />
                   <span>Create Post</span>

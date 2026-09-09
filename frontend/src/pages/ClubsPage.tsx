@@ -109,14 +109,14 @@ export const ClubsPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header Banner */}
-      <div className="p-6 rounded-3xl bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 text-white shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-gradient-to-r from-amber-700 via-brown-800 to-amber-900 text-white shadow-xl shadow-amber-950/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="space-y-1">
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 backdrop-blur-md text-[11px] font-semibold">
-            <Sparkles className="w-3.5 h-3.5 text-cyan-200" />
+            <Sparkles className="w-3.5 h-3.5 text-amber-300" />
             <span>Campus Communities</span>
           </div>
-          <h2 className="text-2xl font-black">Student Clubs & Societies</h2>
-          <p className="text-xs text-blue-100 max-w-xl">
+          <h2 className="text-2xl font-black font-display">Student Clubs & Societies</h2>
+          <p className="text-xs text-amber-100/90 max-w-xl font-normal leading-relaxed">
             Join campus chapters, coding groups, entrepreneurship cells, and cultural societies. Follow verified club announcements and recruitment calls.
           </p>
         </div>
@@ -124,7 +124,7 @@ export const ClubsPage: React.FC = () => {
         {user && (
           <button
             onClick={() => setShowCreateModal(true)}
-            className="px-4 py-2.5 rounded-xl bg-white text-blue-700 hover:bg-blue-50 font-bold text-xs shadow-md transition flex items-center justify-center gap-1.5 flex-shrink-0"
+            className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 text-stone-950 font-black text-xs shadow-md transition-all duration-200 hover:scale-105 flex items-center justify-center gap-1.5 flex-shrink-0 cursor-pointer"
           >
             <Plus className="w-4 h-4" />
             <span>Register a Club</span>

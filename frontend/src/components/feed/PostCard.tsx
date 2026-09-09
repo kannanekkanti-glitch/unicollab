@@ -253,7 +253,7 @@ export const PostCard: React.FC<PostCardProps> = ({
                   >
                     {/* Animated Progress bar background */}
                     <div
-                      className="absolute inset-y-0 left-0 bg-gradient-to-r from-brand-500/25 to-indigo-500/25 dark:from-brand-500/35 dark:to-indigo-500/35 transition-all duration-700 ease-out"
+                      className="absolute inset-y-0 left-0 bg-gradient-to-r from-amber-500/25 to-yellow-500/25 dark:from-amber-500/35 dark:to-yellow-500/35 transition-all duration-700 ease-out"
                       style={{ width: `${percentage}%` }}
                     />
                     <span className="relative z-10 flex items-center gap-2 text-slate-800 dark:text-slate-200">

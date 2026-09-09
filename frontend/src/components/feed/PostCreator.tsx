@@ -298,7 +298,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({ onPostCreated, onCance
             <button
               type="submit"
               disabled={loading || !title.trim() || !content.trim()}
-              className="luxury-shimmer-btn px-5 py-2 bg-gradient-to-r from-brand-600 via-indigo-600 to-violet-600 hover:from-brand-500 hover:to-violet-500 text-white font-bold rounded-2xl shadow-lg shadow-brand-500/25 disabled:opacity-50 transition-all duration-200 hover:scale-105 flex items-center gap-2 cursor-pointer"
+              className="luxury-shimmer-btn px-5 py-2 bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 hover:from-amber-400 hover:to-yellow-300 text-stone-950 font-black rounded-2xl shadow-lg shadow-amber-500/25 disabled:opacity-50 transition-all duration-200 hover:scale-105 flex items-center gap-2 cursor-pointer"
             >
               <Send className="w-4 h-4" />
               <span>Publish</span>

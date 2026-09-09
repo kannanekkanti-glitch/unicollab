@@ -36,7 +36,7 @@ const AppLayout: React.FC<{ children: React.ReactNode; hideRightSidebar?: boolea
   const [showGlobalPostModal, setShowGlobalPostModal] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#030712] text-slate-900 dark:text-slate-100 flex flex-col">
+    <div className="min-h-screen bg-[#faf8f5] dark:bg-[#0c0a09] text-stone-900 dark:text-stone-100 flex flex-col">
       <Navbar onOpenCreatePost={() => setShowGlobalPostModal(true)} />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-20 lg:pb-8 flex gap-6">

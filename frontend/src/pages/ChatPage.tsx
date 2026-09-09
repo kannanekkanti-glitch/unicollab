@@ -294,14 +294,14 @@ export const ChatPage: React.FC = () => {
                       <div
                         className={`max-w-xs sm:max-w-md p-3.5 rounded-2xl text-xs leading-relaxed ${
                           isMe
-                            ? 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white rounded-br-none shadow-md shadow-brand-500/20 font-medium'
-                            : 'glass-card text-slate-800 dark:text-slate-200 rounded-bl-none shadow-sm font-medium border border-slate-200/70 dark:border-white/10'
+                            ? 'bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 text-stone-950 rounded-br-none shadow-md shadow-amber-500/25 font-semibold'
+                            : 'glass-card text-stone-800 dark:text-stone-200 rounded-bl-none shadow-sm font-medium border border-stone-200/70 dark:border-amber-500/[0.1]'
                         }`}
                       >
                         <p>{msg.content}</p>
                         <p
-                          className={`text-[9px] mt-1 text-right font-normal ${
-                            isMe ? 'text-brand-200' : 'text-slate-400'
+                          className={`text-[9px] mt-1 text-right font-medium ${
+                            isMe ? 'text-stone-900' : 'text-stone-400'
                           }`}
                         >
                           {new Date(msg.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
@@ -315,19 +315,19 @@ export const ChatPage: React.FC = () => {
             </div>
 
             {/* Input Bar */}
-            <form onSubmit={handleSendMessage} className="p-3 sm:p-4 glass-panel border-t border-slate-200/80 dark:border-white/10 flex items-center gap-2.5">
+            <form onSubmit={handleSendMessage} className="p-3 sm:p-4 glass-panel border-t border-stone-200/80 dark:border-amber-500/[0.1] flex items-center gap-2.5">
               <input
                 type="text"
                 placeholder="Type your message to teammate..."
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
-                className="flex-1 px-4 py-2.5 text-xs bg-slate-100/90 dark:bg-slate-800/60 rounded-2xl border border-slate-200/70 dark:border-white/10 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:bg-white dark:focus:bg-slate-900 focus:outline-none transition-all duration-300 placeholder:text-slate-400"
+                className="flex-1 px-4 py-2.5 text-xs bg-stone-100/90 dark:bg-[#100b07]/90 rounded-2xl border border-stone-200/70 dark:border-amber-500/[0.1] focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:bg-white dark:focus:bg-[#1c140f] focus:outline-none transition-all duration-300 placeholder:text-stone-400 text-stone-900 dark:text-white"
               />
 
               <button
                 type="submit"
                 disabled={sending || (!newMessage.trim() && !attachmentUrl)}
-                className="luxury-shimmer-btn px-5 py-2.5 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white rounded-2xl text-xs font-bold shadow-md shadow-brand-500/25 disabled:opacity-50 transition-all duration-200 hover:scale-105 flex items-center gap-1.5 cursor-pointer"
+                className="luxury-shimmer-btn px-5 py-2.5 bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 hover:from-amber-400 hover:to-yellow-300 text-stone-950 rounded-2xl text-xs font-black shadow-md shadow-amber-500/25 disabled:opacity-50 transition-all duration-200 hover:scale-105 flex items-center gap-1.5 cursor-pointer"
               >
                 <span>Send</span>
                 <Send className="w-3.5 h-3.5" />
@@ -336,7 +336,7 @@ export const ChatPage: React.FC = () => {
           </>
         ) : (
           <div className="flex-1 flex flex-col items-center justify-center p-8 text-center text-slate-400 space-y-3">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-600 text-white flex items-center justify-center shadow-lg shadow-brand-500/25">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-600 via-yellow-500 to-amber-700 text-stone-950 flex items-center justify-center shadow-lg shadow-amber-500/25">
               <MessageSquare className="w-7 h-7" />
             </div>
             <h4 className="text-base font-bold text-slate-800 dark:text-slate-200">

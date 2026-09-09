@@ -95,14 +95,14 @@ export const HackathonsPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header Banner */}
-      <div className="p-7 rounded-3xl bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 text-white shadow-xl shadow-violet-500/20 space-y-2 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="p-7 rounded-3xl bg-gradient-to-r from-amber-700 via-brown-800 to-amber-900 text-white shadow-xl shadow-amber-950/30 space-y-2 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md text-xs font-bold border border-white/20">
           <Trophy className="w-3.5 h-3.5 text-amber-300" />
           <span>Competitions & Sprints</span>
         </div>
-        <h2 className="text-2xl sm:text-3xl font-black tracking-tight">Collegiate Hackathons & Squads</h2>
-        <p className="text-xs sm:text-sm text-violet-100 max-w-xl font-normal leading-relaxed">
+        <h2 className="text-2xl sm:text-3xl font-black tracking-tight font-display">Collegiate Hackathons & Squads</h2>
+        <p className="text-xs sm:text-sm text-amber-100/90 max-w-xl font-normal leading-relaxed">
           Discover top collegiate hackathons, form cross-campus squads, and lock in your roster before registration deadlines.
         </p>
       </div>
@@ -180,7 +180,7 @@ export const HackathonsPage: React.FC = () => {
                         setSelectedHackathon(h);
                         setShowTeamModal(true);
                       }}
-                      className="luxury-shimmer-btn px-4 py-2.5 rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-bold text-xs shadow-lg shadow-violet-500/25 flex items-center gap-2 transition-all duration-200 hover:scale-105 cursor-pointer"
+                      className="luxury-shimmer-btn px-4 py-2.5 rounded-2xl bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 text-stone-950 font-black text-xs shadow-lg shadow-amber-500/25 flex items-center gap-2 transition-all duration-200 hover:scale-105 cursor-pointer"
                     >
                       <Plus className="w-4 h-4" />
                       <span>Form Team</span>

@@ -55,8 +55,8 @@ export const HomeFeedPage: React.FC = () => {
             onClick={() => setFeedType('all')}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
               feedType === 'all'
-                ? 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-md shadow-brand-500/25 scale-[1.02]'
-                : 'text-slate-600 hover:bg-slate-100/80 dark:text-slate-400 dark:hover:bg-slate-800/60'
+                ? 'bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 text-stone-950 font-black shadow-md shadow-amber-500/25 scale-[1.02]'
+                : 'text-stone-600 hover:bg-stone-100/80 dark:text-stone-400 dark:hover:bg-[#1c140f]/80'
             }`}
           >
             <Globe className="w-3.5 h-3.5" />
@@ -67,8 +67,8 @@ export const HomeFeedPage: React.FC = () => {
             onClick={() => setFeedType('campus')}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
               feedType === 'campus'
-                ? 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-md shadow-brand-500/25 scale-[1.02]'
-                : 'text-slate-600 hover:bg-slate-100/80 dark:text-slate-400 dark:hover:bg-slate-800/60'
+                ? 'bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 text-stone-950 font-black shadow-md shadow-amber-500/25 scale-[1.02]'
+                : 'text-stone-600 hover:bg-stone-100/80 dark:text-stone-400 dark:hover:bg-[#1c140f]/80'
             }`}
           >
             <Building className="w-3.5 h-3.5" />
@@ -79,11 +79,11 @@ export const HomeFeedPage: React.FC = () => {
             onClick={() => setFeedType('trending')}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
               feedType === 'trending'
-                ? 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-md shadow-brand-500/25 scale-[1.02]'
-                : 'text-slate-600 hover:bg-slate-100/80 dark:text-slate-400 dark:hover:bg-slate-800/60'
+                ? 'bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 text-stone-950 font-black shadow-md shadow-amber-500/25 scale-[1.02]'
+                : 'text-stone-600 hover:bg-stone-100/80 dark:text-stone-400 dark:hover:bg-[#1c140f]/80'
             }`}
           >
-            <Flame className="w-3.5 h-3.5 text-orange-400 animate-bounce" style={{ animationDuration: '2s' }} />
+            <Flame className="w-3.5 h-3.5 text-amber-500 animate-bounce" style={{ animationDuration: '2s' }} />
             <span>Trending</span>
           </button>
 
@@ -91,8 +91,8 @@ export const HomeFeedPage: React.FC = () => {
             onClick={() => setFeedType('announcements')}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
               feedType === 'announcements'
-                ? 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-md shadow-brand-500/25 scale-[1.02]'
-                : 'text-slate-600 hover:bg-slate-100/80 dark:text-slate-400 dark:hover:bg-slate-800/60'
+                ? 'bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 text-stone-950 font-black shadow-md shadow-amber-500/25 scale-[1.02]'
+                : 'text-stone-600 hover:bg-stone-100/80 dark:text-stone-400 dark:hover:bg-[#1c140f]/80'
             }`}
           >
             <Megaphone className="w-3.5 h-3.5" />
@@ -143,14 +143,14 @@ export const HomeFeedPage: React.FC = () => {
               className="p-4 sm:p-5 rounded-3xl glass-card flex items-center justify-between gap-3 cursor-pointer hover:border-brand-500/40 transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 group"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-600 flex items-center justify-center text-white font-black text-sm shadow-md shadow-brand-500/20 group-hover:scale-110 transition-transform">
+                <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-600 via-yellow-500 to-amber-700 flex items-center justify-center text-stone-950 font-black text-sm shadow-md shadow-amber-500/20 group-hover:scale-110 transition-transform">
                   {user.full_name[0]}
                 </div>
-                <span className="text-xs sm:text-sm text-slate-400 font-medium group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors">
+                <span className="text-xs sm:text-sm text-stone-400 font-medium group-hover:text-stone-600 dark:group-hover:text-stone-300 transition-colors">
                   Have an announcement, capstone idea, or fest question? Click to post...
                 </span>
               </div>
-              <button className="luxury-shimmer-btn px-4 py-2 rounded-2xl bg-gradient-to-r from-brand-600 to-indigo-600 text-white text-xs font-bold shadow-md shadow-brand-500/25 flex items-center gap-1.5 transition-transform group-hover:scale-105">
+              <button className="luxury-shimmer-btn px-4 py-2 rounded-2xl bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 text-stone-950 text-xs font-black shadow-md shadow-amber-500/25 flex items-center gap-1.5 transition-transform group-hover:scale-105 cursor-pointer">
                 <Plus className="w-4 h-4" />
                 <span>Post</span>
               </button>

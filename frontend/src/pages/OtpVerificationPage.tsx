@@ -99,33 +99,33 @@ export const OtpVerificationPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-[#fafbfc] dark:bg-[#030712] relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-[#faf8f5] dark:bg-[#0c0a09] relative overflow-hidden">
       <div className="absolute inset-0 spotlight-beam pointer-events-none" />
-      <div className="w-full max-w-md p-8 sm:p-10 rounded-3xl bg-white/80 dark:bg-[#080d1a]/85 backdrop-blur-2xl border border-slate-200/80 dark:border-white/[0.08] shadow-2xl shadow-slate-900/5 dark:shadow-black/70 space-y-6 text-center relative specular-top z-10">
+      <div className="w-full max-w-md p-8 sm:p-10 rounded-3xl bg-white/80 dark:bg-[#150f0b]/85 backdrop-blur-2xl border border-stone-200/80 dark:border-amber-500/[0.12] shadow-2xl shadow-stone-950/5 dark:shadow-black/70 space-y-6 text-center relative specular-top z-10">
         {success ? (
           <div className="py-8 space-y-3 animate-in fade-in zoom-in-95">
-            <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center justify-center mx-auto shadow-lg shadow-emerald-500/20">
+            <div className="w-16 h-16 rounded-full bg-amber-500/10 text-amber-500 border border-amber-500/30 flex items-center justify-center mx-auto shadow-lg shadow-amber-500/20">
               <CheckCircle2 className="w-10 h-10" />
             </div>
-            <h2 className="text-xl font-black text-slate-900 dark:text-white font-display">
+            <h2 className="text-xl font-black text-stone-900 dark:text-white font-display">
               Student Identity Verified
             </h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-xs text-stone-500 dark:text-stone-400">
               Welcome to the exclusive campus network. Redirecting to your college feed...
             </p>
           </div>
         ) : (
           <>
             <div className="space-y-2">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 flex items-center justify-center mx-auto shadow-sm">
+              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-500 border border-amber-500/20 flex items-center justify-center mx-auto shadow-sm">
                 <ShieldCheck className="w-6 h-6" />
               </div>
-              <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white font-display">
+              <h2 className="text-2xl font-black tracking-tight text-stone-900 dark:text-white font-display">
                 Verify Student Email
               </h2>
-              <p className="text-xs text-slate-500 dark:text-slate-400 max-w-xs mx-auto">
+              <p className="text-xs text-stone-500 dark:text-stone-400 max-w-xs mx-auto">
                 We sent a 6-digit campus verification code to <br />
-                <span className="font-semibold text-slate-800 dark:text-slate-200">{email}</span>
+                <span className="font-semibold text-stone-800 dark:text-stone-200">{email}</span>
               </p>
             </div>
 
@@ -142,14 +142,14 @@ export const OtpVerificationPage: React.FC = () => {
                   <span className="font-bold text-amber-800 dark:text-amber-200 flex items-center gap-1">
                     <Sparkles className="w-3.5 h-3.5 text-amber-500" /> Demo Code Generated:
                   </span>
-                  <span className="font-mono text-xs font-bold text-slate-900 dark:text-white">
+                  <span className="font-mono text-xs font-bold text-stone-900 dark:text-white">
                     {demoCode}
                   </span>
                 </div>
                 <button
                   type="button"
                   onClick={handleAutoFill}
-                  className="px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold text-[11px] hover:bg-amber-400 transition shadow-sm cursor-pointer"
+                  className="px-2.5 py-1 rounded-lg bg-amber-500 text-stone-950 font-bold text-[11px] hover:bg-amber-400 transition shadow-sm cursor-pointer"
                 >
                   Auto-Fill
                 </button>
@@ -168,7 +168,7 @@ export const OtpVerificationPage: React.FC = () => {
                     value={digit}
                     onChange={(e) => handleChange(idx, e.target.value)}
                     onKeyDown={(e) => handleKeyDown(idx, e)}
-                    className="w-11 h-12 sm:w-12 sm:h-14 text-center font-bold text-lg rounded-xl bg-slate-50/80 dark:bg-[#060a16]/90 border border-slate-200/80 dark:border-white/[0.1] focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:bg-white dark:focus:bg-[#0b1124] text-slate-900 dark:text-white focus:outline-none transition shadow-sm"
+                    className="w-11 h-12 sm:w-12 sm:h-14 text-center font-bold text-lg rounded-xl bg-stone-50/80 dark:bg-[#100b07]/90 border border-stone-200/80 dark:border-amber-500/[0.1] focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:bg-white dark:focus:bg-[#1c140f] text-stone-900 dark:text-white focus:outline-none transition shadow-sm"
                   />
                 ))}
               </div>
@@ -176,14 +176,14 @@ export const OtpVerificationPage: React.FC = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-2.5 rounded-xl bg-gradient-to-r from-brand-600 via-indigo-600 to-violet-600 hover:from-brand-500 hover:to-violet-500 text-white font-semibold text-xs shadow-lg shadow-brand-500/20 hover:shadow-brand-500/35 transition-all duration-200 disabled:opacity-50 flex items-center justify-center gap-2 group cursor-pointer"
+                className="w-full py-2.5 rounded-xl bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 hover:from-amber-400 hover:to-yellow-300 text-stone-950 font-black text-xs shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 transition-all duration-200 disabled:opacity-50 flex items-center justify-center gap-2 group cursor-pointer"
               >
                 <span>{loading ? 'Verifying...' : 'Verify & Enter Campus'}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </button>
             </form>
 
-            <div className="pt-2 flex items-center justify-between text-xs text-slate-500">
+            <div className="pt-2 flex items-center justify-between text-xs text-stone-500 dark:text-stone-400">
               <button
                 type="button"
                 onClick={handleResend}
@@ -197,7 +197,7 @@ export const OtpVerificationPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => navigate('/login')}
-                className="text-brand-600 hover:underline font-medium"
+                className="text-amber-600 dark:text-amber-400 hover:underline font-bold"
               >
                 Back to Sign In
               </button>

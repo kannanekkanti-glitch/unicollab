@@ -90,13 +90,13 @@ export const EventsPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header Banner */}
-      <div className="p-6 rounded-3xl bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="p-6 rounded-3xl bg-gradient-to-r from-amber-700 via-brown-800 to-amber-900 text-white shadow-xl shadow-amber-950/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="space-y-1">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-bold border border-white/30">
             <Sparkles className="w-3.5 h-3.5 text-amber-200" />
             <span>Campus Happenings</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-black tracking-tight">College Fests & Official Events</h2>
+          <h2 className="text-2xl sm:text-3xl font-black tracking-tight font-display">College Fests & Official Events</h2>
           <p className="text-xs sm:text-sm text-amber-100 max-w-xl font-normal leading-relaxed">
             Never miss an annual cultural fest, coding symposium, or university concert. Reserve passes directly with verified student privileges.
           </p>
@@ -105,7 +105,7 @@ export const EventsPage: React.FC = () => {
         {user && (
           <button
             onClick={() => setShowCreateModal(true)}
-            className="luxury-shimmer-btn px-5 py-3 rounded-2xl bg-white text-orange-700 hover:bg-orange-50 font-extrabold text-xs shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 flex-shrink-0 cursor-pointer"
+            className="luxury-shimmer-btn px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 text-stone-950 font-black text-xs shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 flex-shrink-0 cursor-pointer"
           >
             <Plus className="w-4 h-4" />
             <span>Publish Campus Event</span>

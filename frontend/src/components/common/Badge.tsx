@@ -53,7 +53,7 @@ export const Badge: React.FC<BadgeProps> = ({
   if (type === 'college') {
     return (
       <span
-        className={`inline-flex items-center gap-1 font-medium rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200/60 dark:bg-indigo-950/40 dark:text-indigo-300 dark:border-indigo-800/60 ${sizeClasses} ${className}`}
+        className={`inline-flex items-center gap-1 font-medium rounded-full bg-amber-500/10 text-amber-800 border border-amber-500/25 dark:bg-amber-950/40 dark:text-amber-200 dark:border-amber-800/60 ${sizeClasses} ${className}`}
       >
         <Building className={size === 'sm' ? 'w-3.5 h-3.5' : 'w-4 h-4'} />
         {text}
@@ -64,7 +64,7 @@ export const Badge: React.FC<BadgeProps> = ({
   if (type === 'category') {
     return (
       <span
-        className={`inline-flex items-center font-medium rounded-md bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 ${sizeClasses} ${className}`}
+        className={`inline-flex items-center font-medium rounded-md bg-stone-100 text-stone-700 dark:bg-[#1c140f] dark:text-stone-300 ${sizeClasses} ${className}`}
       >
         {text}
       </span>
@@ -73,9 +73,9 @@ export const Badge: React.FC<BadgeProps> = ({
 
   return (
     <span
-      className={`inline-flex items-center font-medium rounded-full bg-brand-100 text-brand-800 dark:bg-brand-900/50 dark:text-brand-200 ${sizeClasses} ${className}`}
+      className={`inline-flex items-center font-medium rounded-full bg-amber-500/15 text-amber-900 border border-amber-500/30 dark:bg-amber-950/50 dark:text-amber-200 ${sizeClasses} ${className}`}
     >
-      <Sparkles className="w-3 h-3 mr-1" />
+      <Sparkles className="w-3 h-3 mr-1 text-amber-500" />
       {text}
     </span>
   );

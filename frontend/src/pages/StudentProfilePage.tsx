@@ -100,9 +100,9 @@ export const StudentProfilePage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Profile Header Banner Card */}
-      <div className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm overflow-hidden">
+      <div className="rounded-3xl glass-card border border-stone-200/80 dark:border-amber-500/[0.12] shadow-sm overflow-hidden">
         {/* Cover gradient or image */}
-        <div className="h-36 sm:h-48 bg-gradient-to-r from-brand-600 via-indigo-600 to-violet-700 relative" />
+        <div className="h-36 sm:h-48 bg-gradient-to-r from-amber-700 via-brown-800 to-amber-900 relative" />
 
         {/* Profile Info Row */}
         <div className="px-6 pb-6 pt-0 relative">
