@@ -4,15 +4,27 @@
 
 @layer base {
   body {
-    @apply bg-[#f8fafc] text-slate-900 antialiased dark:bg-[#090d16] dark:text-slate-100;
+    @apply bg-[#fafbfc] text-slate-900 antialiased dark:bg-[#030712] dark:text-slate-100 font-sans;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
   }
 }
 
 @layer utilities {
-  /* Luxury Glassmorphism */
+  /* Bento & Luxury Obsidian Glassmorphism */
+  .bento-card {
+    @apply bg-white/85 dark:bg-[#080d1a]/80 backdrop-blur-2xl border border-slate-200/80 dark:border-white/[0.08] shadow-xl shadow-slate-900/5 dark:shadow-2xl dark:shadow-black/60 rounded-3xl relative overflow-hidden transition-all duration-300;
+  }
+
+  .bento-card-hover {
+    @apply hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-brand-500/10 hover:border-brand-500/30 dark:hover:border-brand-400/40;
+  }
+
   .glass-card {
-    @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 shadow-lg shadow-slate-900/5 dark:shadow-black/40;
+    @apply bg-white/80 dark:bg-[#080d1a]/80 backdrop-blur-xl border border-slate-200/80 dark:border-white/[0.08] shadow-lg shadow-slate-900/5 dark:shadow-black/60;
   }
 
   .glass-card-hover {
@@ -20,16 +32,45 @@
   }
 
   .glass-panel {
-    @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-2xl border border-slate-200/70 dark:border-white/10;
+    @apply bg-white/75 dark:bg-[#060a16]/80 backdrop-blur-2xl border border-slate-200/70 dark:border-white/[0.08];
   }
 
-  /* Luxury Gradient Text */
+  /* Linear / Apple Style Headline Gradient */
+  .headline-gradient {
+    @apply bg-gradient-to-b from-slate-950 via-slate-800 to-slate-600 dark:from-white dark:via-white/95 dark:to-white/60 bg-clip-text text-transparent;
+  }
+
+  /* Luxury Multi-Stop Gradient Text */
   .luxury-gradient-text {
-    @apply bg-gradient-to-r from-brand-600 via-indigo-500 to-violet-600 dark:from-brand-400 dark:via-indigo-300 dark:to-violet-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-brand-600 via-indigo-500 to-violet-600 dark:from-brand-300 dark:via-indigo-300 dark:to-violet-400 bg-clip-text text-transparent;
   }
 
   .luxury-gradient-gold {
     @apply bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 bg-clip-text text-transparent;
+  }
+
+  /* Overhead Spotlight Background Beam */
+  .spotlight-beam {
+    background-image: radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      rgba(99, 102, 241, 0.22),
+      rgba(139, 92, 246, 0.12) 40%,
+      transparent 70%
+    );
+  }
+
+  /* Specular Highlight Top Edge */
+  .specular-top {
+    position: relative;
+  }
+  .specular-top::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
   }
 
   /* Shimmer CTA Button Effect */

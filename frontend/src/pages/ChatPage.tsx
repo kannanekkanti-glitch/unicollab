@@ -155,7 +155,7 @@ export const ChatPage: React.FC = () => {
   return (
     <div className="h-[calc(100vh-8rem)] rounded-3xl glass-card border border-slate-200/80 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col md:flex-row">
       {/* Conversations List Column */}
-      <div className="w-full md:w-80 flex-shrink-0 border-r border-slate-200/80 dark:border-white/10 flex flex-col bg-slate-50/50 dark:bg-slate-950/30">
+      <div className="w-full md:w-80 flex-shrink-0 border-r border-slate-200/80 dark:border-white/10 flex flex-col bg-slate-50/50 dark:bg-[#030712]/50">
         <div className="p-4 border-b border-slate-200/60 dark:border-white/10 flex items-center justify-between">
           <h3 className="font-extrabold text-sm text-slate-900 dark:text-white flex items-center gap-2">
             <MessageSquare className="w-4 h-4 text-brand-600 dark:text-brand-400" />

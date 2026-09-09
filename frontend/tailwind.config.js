@@ -7,7 +7,18 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', 'Inter', '-apple-system', 'sans-serif'],
+      },
       colors: {
+        obsidian: {
+          950: '#030712',
+          900: '#070b18',
+          850: '#0b1124',
+          800: '#111827',
+          750: '#1e293b',
+        },
         brand: {
           50: '#eef2ff',
           100: '#e0e7ff',
