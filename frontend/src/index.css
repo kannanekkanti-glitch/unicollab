@@ -4,8 +4,79 @@
 
 @layer base {
   body {
-    @apply bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
+    @apply bg-[#f8fafc] text-slate-900 antialiased dark:bg-[#090d16] dark:text-slate-100;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+@layer utilities {
+  /* Luxury Glassmorphism */
+  .glass-card {
+    @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 shadow-lg shadow-slate-900/5 dark:shadow-black/40;
+  }
+
+  .glass-card-hover {
+    @apply transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-brand-500/10 hover:border-brand-500/30 dark:hover:border-brand-400/40;
+  }
+
+  .glass-panel {
+    @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-2xl border border-slate-200/70 dark:border-white/10;
+  }
+
+  /* Luxury Gradient Text */
+  .luxury-gradient-text {
+    @apply bg-gradient-to-r from-brand-600 via-indigo-500 to-violet-600 dark:from-brand-400 dark:via-indigo-300 dark:to-violet-400 bg-clip-text text-transparent;
+  }
+
+  .luxury-gradient-gold {
+    @apply bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 bg-clip-text text-transparent;
+  }
+
+  /* Shimmer CTA Button Effect */
+  .luxury-shimmer-btn {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .luxury-shimmer-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      60deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.25) 50%,
+      transparent 70%
+    );
+    transform: rotate(30deg) translateX(-100%);
+    animation: shimmer-swipe 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Holographic / Verified Badge Glow */
+  .verified-badge-glow {
+    position: relative;
+  }
+  .verified-badge-glow::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.4), rgba(99, 102, 241, 0.3));
+    z-index: -1;
+    filter: blur(4px);
+    opacity: 0.7;
+  }
+}
+
+@keyframes shimmer-swipe {
+  0% {
+    transform: rotate(30deg) translateX(-120%);
+  }
+  20%, 100% {
+    transform: rotate(30deg) translateX(120%);
   }
 }
 
@@ -27,3 +98,4 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(100, 116, 139, 0.6);
 }
+

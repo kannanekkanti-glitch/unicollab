@@ -113,14 +113,15 @@ export const ProjectsPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header Banner */}
-      <div className="p-6 rounded-3xl bg-gradient-to-r from-brand-600 via-indigo-600 to-violet-600 text-white shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div className="space-y-1">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 backdrop-blur-md text-[11px] font-semibold">
+      <div className="p-7 rounded-3xl bg-gradient-to-r from-brand-600 via-indigo-600 to-violet-600 text-white shadow-xl shadow-brand-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="space-y-1.5 relative z-10">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md text-xs font-bold border border-white/20">
             <Sparkles className="w-3.5 h-3.5 text-amber-300" />
             <span>Campus Innovation Hub</span>
           </div>
-          <h2 className="text-2xl font-black">Student Projects & Collaboration</h2>
-          <p className="text-xs text-brand-100 max-w-xl">
+          <h2 className="text-2xl sm:text-3xl font-black tracking-tight">Student Projects & Collaboration</h2>
+          <p className="text-xs sm:text-sm text-brand-100 max-w-xl font-normal leading-relaxed">
             Explore active capstones, research endeavors, and hackathon prototypes built by students. Join open teams or list your own project.
           </p>
         </div>
@@ -128,7 +129,7 @@ export const ProjectsPage: React.FC = () => {
         {user && (
           <button
             onClick={() => setShowCreateModal(true)}
-            className="px-4 py-2.5 rounded-xl bg-white text-brand-700 hover:bg-brand-50 font-bold text-xs shadow-md transition flex items-center justify-center gap-1.5 flex-shrink-0"
+            className="luxury-shimmer-btn px-5 py-3 rounded-2xl bg-white text-brand-700 hover:bg-brand-50 font-extrabold text-xs shadow-lg transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 flex-shrink-0 relative z-10 cursor-pointer"
           >
             <Plus className="w-4 h-4" />
             <span>List Your Project</span>
@@ -143,10 +144,10 @@ export const ProjectsPage: React.FC = () => {
             <button
               key={dom}
               onClick={() => setSelectedDomain(dom)}
-              className={`px-3.5 py-1.5 rounded-xl font-medium whitespace-nowrap transition ${
+              className={`px-3.5 py-1.5 rounded-full whitespace-nowrap font-bold transition-all duration-200 cursor-pointer ${
                 selectedDomain === dom
-                  ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-sm'
-                  : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-slate-800 hover:border-slate-300'
+                  ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-md scale-105'
+                  : 'glass-card text-slate-600 dark:text-slate-400 hover:text-brand-600 hover:border-brand-400'
               }`}
             >
               {dom}
@@ -155,60 +156,60 @@ export const ProjectsPage: React.FC = () => {
         </div>
 
         <div className="relative w-full sm:w-64">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
           <input
             type="text"
             placeholder="Search projects or skills..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3.5 py-1.5 text-xs bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl focus:border-brand-500 focus:outline-none"
+            className="w-full pl-9 pr-3 py-2 text-xs bg-slate-100/90 dark:bg-slate-800/60 rounded-xl border border-transparent focus:border-brand-500 focus:outline-none"
           />
         </div>
       </div>
 
       {/* Projects Grid */}
       {loading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 animate-pulse space-y-3">
-              <div className="h-4 bg-slate-200 dark:bg-slate-800 rounded w-1/3" />
-              <div className="h-14 bg-slate-100 dark:bg-slate-800/60 rounded" />
+            <div key={i} className="p-6 rounded-3xl glass-card animate-pulse space-y-4">
+              <div className="h-5 bg-slate-200 dark:bg-slate-800 rounded w-1/3" />
+              <div className="h-4 bg-slate-200 dark:bg-slate-800 rounded w-3/4" />
+              <div className="h-16 bg-slate-100 dark:bg-slate-800/60 rounded" />
             </div>
           ))}
         </div>
       ) : projects.length === 0 ? (
-        <div className="p-12 text-center rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
-          <FolderGit2 className="w-10 h-10 text-slate-400 mx-auto" />
-          <h3 className="text-base font-bold text-slate-900 dark:text-white">No projects found</h3>
-          <p className="text-xs text-slate-500">Try adjusting your domain filter or list your project now.</p>
+        <div className="p-12 text-center rounded-3xl glass-card space-y-3">
+          <p className="text-sm font-bold text-slate-600 dark:text-slate-400">No projects found matching your filters.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {projects.map((proj) => {
-            const openRolesList = proj.open_roles ? proj.open_roles.split(',').map(r => r.trim()).filter(Boolean) : [];
             const skillsList = proj.skills_required ? proj.skills_required.split(',').map(s => s.trim()).filter(Boolean) : [];
+            const openRolesList = proj.open_roles ? proj.open_roles.split(',').map(r => r.trim()).filter(Boolean) : [];
 
             return (
               <div
                 key={proj.id}
-                className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between hover:shadow-md transition space-y-4"
+                className="p-6 rounded-3xl glass-card glass-card-hover flex flex-col justify-between space-y-5 relative group border border-slate-200/80 dark:border-white/10"
               >
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-brand-100 dark:bg-brand-950 text-brand-700 dark:text-brand-300">
+                  {/* Top domain badge & stage */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-brand-500/10 text-brand-700 dark:text-brand-300 border border-brand-500/20">
                       {proj.domain}
                     </span>
-                    <span className="text-[10px] text-slate-400 font-semibold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800">
+                    <span className="text-[10px] text-slate-500 dark:text-slate-400 font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200/60 dark:border-white/5">
                       {proj.stage}
                     </span>
                   </div>
 
                   <div>
-                    <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                    <h3 className="text-lg font-black text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
                       {proj.title}
                     </h3>
                     {proj.tagline && (
-                      <p className="text-xs font-medium text-brand-600 dark:text-brand-400 mt-0.5">
+                      <p className="text-xs font-semibold text-brand-600 dark:text-brand-400 mt-0.5">
                         {proj.tagline}
                       </p>
                     )}
@@ -219,9 +220,9 @@ export const ProjectsPage: React.FC = () => {
 
                   {/* Skills tags */}
                   {skillsList.length > 0 && (
-                    <div className="flex flex-wrap gap-1 pt-1">
+                    <div className="flex flex-wrap gap-1.5 pt-1">
                       {skillsList.map((skill) => (
-                        <span key={skill} className="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[10px] font-medium">
+                        <span key={skill} className="px-2.5 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 text-[10px] font-semibold border border-slate-200/60 dark:border-white/5">
                           {skill}
                         </span>
                       ))}
@@ -230,13 +231,14 @@ export const ProjectsPage: React.FC = () => {
 
                   {/* Open Roles banner */}
                   {openRolesList.length > 0 && (
-                    <div className="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200/80 dark:border-amber-800/60">
-                      <span className="text-[10px] font-bold text-amber-800 dark:text-amber-300 uppercase tracking-wider block mb-1">
-                        Looking for Teammates:
+                    <div className="p-3 rounded-2xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-300/60 dark:border-amber-700/50 shadow-sm">
+                      <span className="text-[10px] font-black text-amber-800 dark:text-amber-300 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
+                        <span>🔥</span>
+                        <span>Looking for Teammates:</span>
                       </span>
-                      <div className="flex flex-wrap gap-1">
+                      <div className="flex flex-wrap gap-1.5">
                         {openRolesList.map((role) => (
-                          <span key={role} className="px-2 py-0.5 rounded-md bg-white dark:bg-slate-900 text-amber-900 dark:text-amber-200 text-[10px] font-bold border border-amber-200 dark:border-amber-800">
+                          <span key={role} className="px-2.5 py-0.5 rounded-md bg-white dark:bg-slate-900 text-amber-900 dark:text-amber-200 text-[10px] font-bold border border-amber-300 dark:border-amber-700 shadow-sm">
                             + {role}
                           </span>
                         ))}
@@ -246,8 +248,8 @@ export const ProjectsPage: React.FC = () => {
                 </div>
 
                 {/* Footer Creator & Apply Action */}
-                <div className="pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs">
-                  <div className="flex items-center gap-2">
+                <div className="pt-4 border-t border-slate-100 dark:border-white/10 flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-2.5">
                     <Avatar
                       src={proj.creator.avatar_url}
                       name={proj.creator.full_name}
@@ -255,10 +257,10 @@ export const ProjectsPage: React.FC = () => {
                       isVerified={proj.creator.verification_status === 'VERIFIED'}
                     />
                     <div className="min-w-0">
-                      <p className="font-semibold text-slate-800 dark:text-slate-200 truncate text-[11px]">
+                      <p className="font-bold text-slate-800 dark:text-slate-200 truncate text-xs">
                         {proj.creator.full_name}
                       </p>
-                      <p className="text-[10px] text-slate-400">
+                      <p className="text-[10px] text-slate-400 font-medium">
                         {proj.creator.college?.short_code || 'Student'}
                       </p>
                     </div>
@@ -270,7 +272,7 @@ export const ProjectsPage: React.FC = () => {
                         href={proj.repo_url}
                         target="_blank"
                         rel="noreferrer"
-                        className="p-1.5 text-slate-400 hover:text-slate-800 dark:hover:text-white"
+                        className="p-2 rounded-xl text-slate-400 hover:text-slate-800 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition"
                         title="GitHub Repository"
                       >
                         <Code2 className="w-4 h-4" />
@@ -284,7 +286,7 @@ export const ProjectsPage: React.FC = () => {
                           setDesiredRole(openRolesList[0] || 'Contributor');
                           setShowApplyModal(true);
                         }}
-                        className="px-3 py-1.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-xs shadow-sm transition"
+                        className="luxury-shimmer-btn px-4 py-2 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold text-xs shadow-md shadow-brand-500/20 transition-all duration-200 hover:scale-105 cursor-pointer"
                       >
                         Apply to Join
                       </button>

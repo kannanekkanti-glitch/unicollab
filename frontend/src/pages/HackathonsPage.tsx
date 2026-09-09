@@ -95,27 +95,28 @@ export const HackathonsPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header Banner */}
-      <div className="p-6 rounded-3xl bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 text-white shadow-md space-y-2">
-        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 backdrop-blur-md text-[11px] font-semibold">
+      <div className="p-7 rounded-3xl bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 text-white shadow-xl shadow-violet-500/20 space-y-2 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md text-xs font-bold border border-white/20">
           <Trophy className="w-3.5 h-3.5 text-amber-300" />
           <span>Competitions & Sprints</span>
         </div>
-        <h2 className="text-2xl font-black">Collegiate Hackathons & Squads</h2>
-        <p className="text-xs text-violet-100 max-w-xl">
-          Discover top collegiate hackathons, form cross-campus squads, and lock in your roster before the registration deadlines.
+        <h2 className="text-2xl sm:text-3xl font-black tracking-tight">Collegiate Hackathons & Squads</h2>
+        <p className="text-xs sm:text-sm text-violet-100 max-w-xl font-normal leading-relaxed">
+          Discover top collegiate hackathons, form cross-campus squads, and lock in your roster before registration deadlines.
         </p>
       </div>
 
       {/* Mode Filters */}
-      <div className="flex items-center gap-2 text-xs">
+      <div className="flex items-center gap-2 text-xs overflow-x-auto pb-1">
         {['All', 'In-Person', 'Hybrid', 'Online'].map((mode) => (
           <button
             key={mode}
             onClick={() => setSelectedMode(mode)}
-            className={`px-3.5 py-1.5 rounded-xl font-medium transition ${
+            className={`px-4 py-1.5 rounded-full font-bold transition-all duration-200 cursor-pointer ${
               selectedMode === mode
-                ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'
-                : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-slate-800'
+                ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-md scale-105'
+                : 'glass-card text-slate-600 dark:text-slate-400 hover:text-violet-600 hover:border-violet-400'
             }`}
           >
             {mode}
@@ -133,20 +134,20 @@ export const HackathonsPage: React.FC = () => {
           {hackathons.map((h) => (
             <div
               key={h.id}
-              className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-5"
+              className="p-6 sm:p-7 rounded-3xl glass-card glass-card-hover space-y-5 border border-slate-200/80 dark:border-white/10 relative group"
             >
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
-                <div className="space-y-2">
+                <div className="space-y-2.5">
                   <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300">
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-violet-500/15 text-violet-700 dark:text-violet-300 border border-violet-500/30">
                       {h.mode}
                     </span>
                     <span className="text-xs font-semibold text-slate-400">
-                      Organized by {h.organizer}
+                      Organized by <strong className="text-slate-700 dark:text-slate-300">{h.organizer}</strong>
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">
+                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
                     {h.title}
                   </h3>
 
@@ -154,17 +155,18 @@ export const HackathonsPage: React.FC = () => {
                     {h.description}
                   </p>
 
-                  <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 pt-1">
-                    <span className="flex items-center gap-1 font-semibold text-emerald-600 dark:text-emerald-400">
-                      🏆 {h.prize_pool}
+                  <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 pt-1.5 font-semibold">
+                    <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/30">
+                      <span>🏆 Prize:</span>
+                      <strong className="font-extrabold">{h.prize_pool}</strong>
                     </span>
                     <span className="flex items-center gap-1">
-                      <Calendar className="w-3.5 h-3.5 text-slate-400" />
+                      <Calendar className="w-4 h-4 text-violet-500" />
                       {new Date(h.start_date).toLocaleDateString()} - {new Date(h.end_date).toLocaleDateString()}
                     </span>
                     {h.location && (
                       <span className="flex items-center gap-1">
-                        <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                        <MapPin className="w-4 h-4 text-slate-400" />
                         {h.location}
                       </span>
                     )}
@@ -178,7 +180,7 @@ export const HackathonsPage: React.FC = () => {
                         setSelectedHackathon(h);
                         setShowTeamModal(true);
                       }}
-                      className="px-3.5 py-2 rounded-xl bg-violet-600 hover:bg-violet-700 text-white font-semibold text-xs shadow-sm flex items-center gap-1.5 transition"
+                      className="luxury-shimmer-btn px-4 py-2.5 rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-bold text-xs shadow-lg shadow-violet-500/25 flex items-center gap-2 transition-all duration-200 hover:scale-105 cursor-pointer"
                     >
                       <Plus className="w-4 h-4" />
                       <span>Form Team</span>
@@ -190,7 +192,7 @@ export const HackathonsPage: React.FC = () => {
                       href={h.registration_url}
                       target="_blank"
                       rel="noreferrer"
-                      className="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-200 font-semibold text-xs flex items-center gap-1.5 transition"
+                      className="px-4 py-2.5 rounded-2xl glass-card hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 transition-all hover:scale-105"
                     >
                       <span>Website</span>
                       <ExternalLink className="w-3.5 h-3.5" />

@@ -135,7 +135,10 @@ export const PostCard: React.FC<PostCardProps> = ({
   const totalPollVotes = pollOptions.reduce((acc, opt) => acc + opt.vote_count, 0);
 
   return (
-    <article className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm transition hover:shadow-md">
+    <article className="p-5 sm:p-6 rounded-3xl glass-card transition-all duration-300 hover:shadow-xl hover:border-brand-500/30 relative overflow-hidden group">
+      {/* Subtle top accent gradient line */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
       {/* Header */}
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3">
@@ -155,21 +158,21 @@ export const PostCard: React.FC<PostCardProps> = ({
           <div>
             <div className="flex items-center gap-2 flex-wrap">
               {post.is_anonymous ? (
-                <span className="font-semibold text-xs text-slate-800 dark:text-slate-200">
+                <span className="font-bold text-xs text-slate-800 dark:text-slate-200">
                   Anonymous Student
                 </span>
               ) : (
                 <Link
                   to={post.author ? `/profile/${post.author.id}` : '#'}
-                  className="font-semibold text-xs text-slate-900 dark:text-white hover:text-brand-600 transition"
+                  className="font-bold text-xs text-slate-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition"
                 >
                   {post.author?.full_name}
                 </Link>
               )}
 
               {post.author?.verification_status === 'VERIFIED' && !post.is_anonymous && (
-                <span className="text-emerald-600" title="Verified Campus Student">
-                  <ShieldCheck className="w-3.5 h-3.5" />
+                <span className="text-emerald-500 verified-badge-glow" title="Verified Campus Student">
+                  <ShieldCheck className="w-4 h-4" />
                 </span>
               )}
 
@@ -178,12 +181,14 @@ export const PostCard: React.FC<PostCardProps> = ({
               )}
             </div>
 
-            <div className="flex items-center gap-2 text-[11px] text-slate-400 mt-0.5">
+            <div className="flex items-center gap-2 text-[11px] text-slate-400 mt-0.5 font-medium">
               <span>{new Date(post.created_at).toLocaleDateString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</span>
               {post.is_campus_only && (
                 <>
                   <span>•</span>
-                  <span className="text-brand-600 font-medium">Campus Only</span>
+                  <span className="text-brand-600 dark:text-brand-400 font-semibold flex items-center gap-0.5">
+                    🔒 Campus Only
+                  </span>
                 </>
               )}
             </div>
@@ -195,7 +200,7 @@ export const PostCard: React.FC<PostCardProps> = ({
           <Badge type="category" text={post.category} size="sm" />
           <button
             onClick={() => setShowReportModal(true)}
-            className="p-1 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition"
+            className="p-1.5 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
             title="Report Post"
           >
             <Flag className="w-3.5 h-3.5" />
@@ -204,17 +209,17 @@ export const PostCard: React.FC<PostCardProps> = ({
       </div>
 
       {/* Content */}
-      <div className="mt-3.5">
-        <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white leading-snug">
+      <div className="mt-4">
+        <h3 className="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white leading-snug tracking-tight">
           {post.title}
         </h3>
-        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2 whitespace-pre-line leading-relaxed">
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2.5 whitespace-pre-line leading-relaxed">
           {post.content}
         </p>
 
         {/* Attachment image */}
         {post.attachment_url && (
-          <div className="mt-3.5 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-800 max-h-96">
+          <div className="mt-4 rounded-2xl overflow-hidden border border-slate-200/70 dark:border-white/10 max-h-96 shadow-md transition-transform duration-300 hover:scale-[1.01]">
             <img
               src={post.attachment_url}
               alt="Post attachment"
@@ -223,12 +228,13 @@ export const PostCard: React.FC<PostCardProps> = ({
           </div>
         )}
 
-        {/* Interactive Poll */}
+        {/* Interactive Poll with Animated Gradient Bars */}
         {post.is_poll && pollOptions.length > 0 && (
-          <div className="mt-4 p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-800 space-y-2.5">
+          <div className="mt-4 p-4 rounded-2xl bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/70 dark:border-white/10 space-y-3">
             {post.poll_question && (
-              <p className="text-xs font-semibold text-slate-700 dark:text-slate-300">
-                📊 {post.poll_question}
+              <p className="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                <span>📊</span>
+                <span>{post.poll_question}</span>
               </p>
             )}
 
@@ -239,57 +245,57 @@ export const PostCard: React.FC<PostCardProps> = ({
                   <button
                     key={opt.id}
                     onClick={() => handlePollVote(opt.id)}
-                    className={`relative w-full text-left p-2.5 rounded-lg border text-xs font-medium overflow-hidden transition flex items-center justify-between ${
+                    className={`relative w-full text-left p-3 rounded-xl border text-xs font-semibold overflow-hidden transition-all duration-300 flex items-center justify-between cursor-pointer ${
                       opt.has_voted
-                        ? 'border-brand-500 bg-brand-50/50 dark:bg-brand-950/30'
-                        : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-brand-400'
+                        ? 'border-brand-500 bg-brand-50/60 dark:bg-brand-950/40 shadow-sm'
+                        : 'border-slate-200/70 dark:border-white/10 bg-white/90 dark:bg-slate-900/80 hover:border-brand-400'
                     }`}
                   >
-                    {/* Progress bar background */}
+                    {/* Animated Progress bar background */}
                     <div
-                      className="absolute inset-y-0 left-0 bg-brand-200/40 dark:bg-brand-900/40 transition-all duration-500"
+                      className="absolute inset-y-0 left-0 bg-gradient-to-r from-brand-500/25 to-indigo-500/25 dark:from-brand-500/35 dark:to-indigo-500/35 transition-all duration-700 ease-out"
                       style={{ width: `${percentage}%` }}
                     />
                     <span className="relative z-10 flex items-center gap-2 text-slate-800 dark:text-slate-200">
-                      {opt.has_voted && <CheckCircle2 className="w-3.5 h-3.5 text-brand-600" />}
+                      {opt.has_voted && <CheckCircle2 className="w-4 h-4 text-brand-600 dark:text-brand-400" />}
                       {opt.text}
                     </span>
-                    <span className="relative z-10 font-bold text-slate-600 dark:text-slate-400">
-                      {percentage}% ({opt.vote_count})
+                    <span className="relative z-10 font-bold text-brand-700 dark:text-brand-300">
+                      {percentage}% <span className="text-[10px] text-slate-400 font-normal">({opt.vote_count})</span>
                     </span>
                   </button>
                 );
               })}
             </div>
-            <p className="text-[10px] text-slate-400 text-right">{totalPollVotes} total votes</p>
+            <p className="text-[10px] font-medium text-slate-400 text-right">{totalPollVotes} total votes</p>
           </div>
         )}
       </div>
 
       {/* Action Bar */}
-      <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs text-slate-500">
-        <div className="flex items-center gap-2">
-          {/* Upvote / Downvote control */}
-          <div className="flex items-center bg-slate-100 dark:bg-slate-800/80 rounded-full p-0.5">
+      <div className="mt-4 pt-3.5 border-t border-slate-100 dark:border-white/10 flex items-center justify-between text-xs text-slate-500">
+        <div className="flex items-center gap-2.5">
+          {/* Upvote / Downvote control with spring tactile bounce */}
+          <div className="flex items-center bg-slate-100/90 dark:bg-slate-800/80 rounded-full p-1 shadow-inner">
             <button
               onClick={() => handleVote(1)}
-              className={`p-1.5 rounded-full transition flex items-center gap-1 ${
+              className={`p-1.5 px-2.5 rounded-full transition-all duration-200 active:scale-90 flex items-center gap-1.5 ${
                 currentVote === 1
-                  ? 'text-brand-600 bg-white dark:bg-slate-900 shadow-sm font-bold'
-                  : 'hover:text-brand-600'
+                  ? 'text-brand-600 bg-white dark:bg-slate-900 shadow-md font-bold scale-105'
+                  : 'hover:text-brand-600 hover:scale-105'
               }`}
               title="Upvote"
             >
               <ArrowBigUp className="w-4 h-4 fill-current" />
-              <span className="text-[11px] font-semibold">{upvotes}</span>
+              <span className="text-xs font-bold">{upvotes}</span>
             </button>
 
             <button
               onClick={() => handleVote(-1)}
-              className={`p-1.5 rounded-full transition ${
+              className={`p-1.5 rounded-full transition-all duration-200 active:scale-90 ${
                 currentVote === -1
-                  ? 'text-rose-600 bg-white dark:bg-slate-900 shadow-sm font-bold'
-                  : 'hover:text-rose-600'
+                  ? 'text-rose-600 bg-white dark:bg-slate-900 shadow-md font-bold scale-105'
+                  : 'hover:text-rose-600 hover:scale-105'
               }`}
               title="Downvote"
             >
@@ -300,10 +306,10 @@ export const PostCard: React.FC<PostCardProps> = ({
           {/* Comment Trigger */}
           <button
             onClick={loadComments}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition text-slate-600 dark:text-slate-300 font-medium"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all duration-200 hover:scale-105 text-slate-600 dark:text-slate-300 font-semibold"
           >
             <MessageCircle className="w-4 h-4" />
-            <span>{commentsCount}</span>
+            <span>{commentsCount} comments</span>
           </button>
         </div>
 
@@ -312,7 +318,7 @@ export const PostCard: React.FC<PostCardProps> = ({
             navigator.clipboard?.writeText?.(window.location.origin + `/posts/${post.id}`);
             alert('Link copied to clipboard!');
           }}
-          className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition"
+          className="p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200 hover:scale-110"
           title="Share post"
         >
           <Share2 className="w-4 h-4" />

@@ -153,21 +153,21 @@ export const ChatPage: React.FC = () => {
   const otherParticipant = selectedConversation?.participants.find(p => p.id !== currentUser?.id) || selectedConversation?.participants[0];
 
   return (
-    <div className="h-[calc(100vh-8rem)] rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm overflow-hidden flex flex-col md:flex-row">
+    <div className="h-[calc(100vh-8rem)] rounded-3xl glass-card border border-slate-200/80 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col md:flex-row">
       {/* Conversations List Column */}
-      <div className="w-full md:w-80 flex-shrink-0 border-r border-slate-200 dark:border-slate-800 flex flex-col">
-        <div className="p-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
-          <h3 className="font-bold text-sm text-slate-900 dark:text-white flex items-center gap-2">
-            <MessageSquare className="w-4 h-4 text-brand-600" />
+      <div className="w-full md:w-80 flex-shrink-0 border-r border-slate-200/80 dark:border-white/10 flex flex-col bg-slate-50/50 dark:bg-slate-950/30">
+        <div className="p-4 border-b border-slate-200/60 dark:border-white/10 flex items-center justify-between">
+          <h3 className="font-extrabold text-sm text-slate-900 dark:text-white flex items-center gap-2">
+            <MessageSquare className="w-4 h-4 text-brand-600 dark:text-brand-400" />
             <span>Campus Messages</span>
           </h3>
-          <span className="text-[11px] font-semibold text-slate-400">
-            {conversations.length} chats
+          <span className="text-[11px] font-bold text-slate-400">
+            {conversations.length} active
           </span>
         </div>
 
         {/* Conversation Items */}
-        <div className="flex-1 overflow-y-auto p-2 space-y-1">
+        <div className="flex-1 overflow-y-auto p-2.5 space-y-1.5">
           {conversations.length === 0 && !targetUserId ? (
             <div className="p-6 text-center text-xs text-slate-400 space-y-2">
               <p>No messages yet.</p>
@@ -184,10 +184,10 @@ export const ChatPage: React.FC = () => {
                 <button
                   key={c.id}
                   onClick={() => setSelectedConversation(c)}
-                  className={`w-full p-3 rounded-2xl text-left flex items-center gap-3 transition ${
+                  className={`w-full p-3 rounded-2xl text-left flex items-center gap-3 transition-all duration-200 cursor-pointer ${
                     isSelected
-                      ? 'bg-brand-50 text-brand-900 dark:bg-brand-950/60 dark:text-brand-200 font-semibold'
-                      : 'hover:bg-slate-50 dark:hover:bg-slate-800/60 text-slate-700 dark:text-slate-300'
+                      ? 'bg-gradient-to-r from-brand-500/15 via-indigo-500/10 to-transparent text-brand-900 dark:text-brand-200 font-bold border border-brand-500/30 shadow-sm'
+                      : 'hover:bg-white dark:hover:bg-slate-800/60 text-slate-700 dark:text-slate-300 border border-transparent'
                   }`}
                 >
                   <Avatar
@@ -207,12 +207,12 @@ export const ChatPage: React.FC = () => {
                         </span>
                       )}
                     </div>
-                    <p className="text-[11px] text-slate-400 truncate mt-0.5">
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate mt-0.5">
                       {c.last_message ? c.last_message.content : 'Started conversation'}
                     </p>
                   </div>
                   {c.unread_count > 0 && (
-                    <span className="w-4 h-4 rounded-full bg-brand-600 text-white text-[10px] flex items-center justify-center font-bold">
+                    <span className="w-4 h-4 rounded-full bg-brand-600 text-white text-[10px] flex items-center justify-center font-bold shadow-sm">
                       {c.unread_count}
                     </span>
                   )}
@@ -224,11 +224,11 @@ export const ChatPage: React.FC = () => {
       </div>
 
       {/* Active Conversation Messages Column */}
-      <div className="flex-1 flex flex-col bg-slate-50/50 dark:bg-slate-900/50">
+      <div className="flex-1 flex flex-col bg-slate-50/30 dark:bg-[#070a12]/50">
         {selectedConversation ? (
           <>
             {/* Chat Header */}
-            <div className="p-3.5 px-6 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md flex items-center justify-between">
+            <div className="p-3.5 px-6 border-b border-slate-200/80 dark:border-white/10 glass-panel flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <Avatar
                   src={otherParticipant?.avatar_url}
@@ -242,12 +242,16 @@ export const ChatPage: React.FC = () => {
                       {selectedConversation.title || otherParticipant?.full_name}
                     </h4>
                     {otherParticipant?.college && (
-                      <span className="text-[10px] font-semibold text-brand-600 dark:text-brand-400">
-                        ({otherParticipant.college.short_code})
+                      <span className="text-[10px] font-bold text-brand-600 dark:text-brand-400 bg-brand-500/10 px-2 py-0.5 rounded-full border border-brand-500/20">
+                        {otherParticipant.college.short_code}
                       </span>
                     )}
+                    <span className="flex items-center gap-1 text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      Active
+                    </span>
                   </div>
-                  <p className="text-[10px] text-slate-400">
+                  <p className="text-[10px] text-slate-400 font-medium">
                     {otherParticipant?.major || 'Verified College Student'}
                   </p>
                 </div>
@@ -256,19 +260,19 @@ export const ChatPage: React.FC = () => {
               {otherParticipant && (
                 <Link
                   to={`/profile/${otherParticipant.id}`}
-                  className="text-xs font-semibold text-brand-600 hover:underline"
+                  className="text-xs font-bold text-brand-600 dark:text-brand-400 hover:underline"
                 >
-                  View Profile
+                  View Profile &rarr;
                 </Link>
               )}
             </div>
 
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3">
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3.5">
               {messages.length === 0 ? (
                 <div className="p-12 text-center text-slate-400 text-xs space-y-1">
-                  <p className="font-semibold text-slate-600 dark:text-slate-300">
-                    Beginning of conversation
+                  <p className="font-bold text-slate-600 dark:text-slate-300">
+                    Beginning of encrypted campus chat
                   </p>
                   <p className="text-[11px]">Say hi to start collaborating!</p>
                 </div>
@@ -278,7 +282,7 @@ export const ChatPage: React.FC = () => {
                   return (
                     <div
                       key={msg.id}
-                      className={`flex items-end gap-2 ${isMe ? 'justify-end' : 'justify-start'}`}
+                      className={`flex items-end gap-2.5 ${isMe ? 'justify-end' : 'justify-start'}`}
                     >
                       {!isMe && (
                         <Avatar
@@ -288,15 +292,15 @@ export const ChatPage: React.FC = () => {
                         />
                       )}
                       <div
-                        className={`max-w-xs sm:max-w-md p-3 rounded-2xl text-xs leading-relaxed ${
+                        className={`max-w-xs sm:max-w-md p-3.5 rounded-2xl text-xs leading-relaxed ${
                           isMe
-                            ? 'bg-brand-600 text-white rounded-br-none shadow-sm'
-                            : 'bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700/60 rounded-bl-none shadow-sm'
+                            ? 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white rounded-br-none shadow-md shadow-brand-500/20 font-medium'
+                            : 'glass-card text-slate-800 dark:text-slate-200 rounded-bl-none shadow-sm font-medium border border-slate-200/70 dark:border-white/10'
                         }`}
                       >
                         <p>{msg.content}</p>
                         <p
-                          className={`text-[9px] mt-1 text-right ${
+                          className={`text-[9px] mt-1 text-right font-normal ${
                             isMe ? 'text-brand-200' : 'text-slate-400'
                           }`}
                         >
@@ -311,31 +315,35 @@ export const ChatPage: React.FC = () => {
             </div>
 
             {/* Input Bar */}
-            <form onSubmit={handleSendMessage} className="p-3 sm:p-4 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex items-center gap-2">
+            <form onSubmit={handleSendMessage} className="p-3 sm:p-4 glass-panel border-t border-slate-200/80 dark:border-white/10 flex items-center gap-2.5">
               <input
                 type="text"
                 placeholder="Type your message to teammate..."
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
-                className="flex-1 px-4 py-2 text-xs bg-slate-100 dark:bg-slate-800 rounded-xl border border-transparent focus:border-brand-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none transition"
+                className="flex-1 px-4 py-2.5 text-xs bg-slate-100/90 dark:bg-slate-800/60 rounded-2xl border border-slate-200/70 dark:border-white/10 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:bg-white dark:focus:bg-slate-900 focus:outline-none transition-all duration-300 placeholder:text-slate-400"
               />
+
               <button
                 type="submit"
-                disabled={sending || !newMessage.trim()}
-                className="p-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white shadow-sm transition disabled:opacity-50"
+                disabled={sending || (!newMessage.trim() && !attachmentUrl)}
+                className="luxury-shimmer-btn px-5 py-2.5 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white rounded-2xl text-xs font-bold shadow-md shadow-brand-500/25 disabled:opacity-50 transition-all duration-200 hover:scale-105 flex items-center gap-1.5 cursor-pointer"
               >
-                <Send className="w-4 h-4" />
+                <span>Send</span>
+                <Send className="w-3.5 h-3.5" />
               </button>
             </form>
           </>
         ) : (
-          <div className="flex-1 flex flex-col items-center justify-center p-8 text-center text-slate-400 text-xs space-y-2">
-            <MessageSquare className="w-10 h-10 text-slate-300 dark:text-slate-700" />
-            <p className="font-semibold text-slate-700 dark:text-slate-300">
-              Select a conversation to start messaging
-            </p>
-            <p className="text-[11px] max-w-xs">
-              Chat directly with verified student peers, hackathon squad members, and club organizers.
+          <div className="flex-1 flex flex-col items-center justify-center p-8 text-center text-slate-400 space-y-3">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-600 text-white flex items-center justify-center shadow-lg shadow-brand-500/25">
+              <MessageSquare className="w-7 h-7" />
+            </div>
+            <h4 className="text-base font-bold text-slate-800 dark:text-slate-200">
+              Your Campus Messaging Hub
+            </h4>
+            <p className="text-xs text-slate-500 max-w-sm">
+              Select an existing chat or click "Message" on any student profile to initiate a direct peer conversation.
             </p>
           </div>
         )}

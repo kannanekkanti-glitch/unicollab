@@ -92,12 +92,12 @@ export const EventsPage: React.FC = () => {
       {/* Header Banner */}
       <div className="p-6 rounded-3xl bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="space-y-1">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 backdrop-blur-md text-[11px] font-semibold">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-bold border border-white/30">
             <Sparkles className="w-3.5 h-3.5 text-amber-200" />
             <span>Campus Happenings</span>
           </div>
-          <h2 className="text-2xl font-black">College Fests & Official Events</h2>
-          <p className="text-xs text-amber-100 max-w-xl">
+          <h2 className="text-2xl sm:text-3xl font-black tracking-tight">College Fests & Official Events</h2>
+          <p className="text-xs sm:text-sm text-amber-100 max-w-xl font-normal leading-relaxed">
             Never miss an annual cultural fest, coding symposium, or university concert. Reserve passes directly with verified student privileges.
           </p>
         </div>
@@ -105,7 +105,7 @@ export const EventsPage: React.FC = () => {
         {user && (
           <button
             onClick={() => setShowCreateModal(true)}
-            className="px-4 py-2.5 rounded-xl bg-white text-orange-700 hover:bg-orange-50 font-bold text-xs shadow-md transition flex items-center justify-center gap-1.5 flex-shrink-0"
+            className="luxury-shimmer-btn px-5 py-3 rounded-2xl bg-white text-orange-700 hover:bg-orange-50 font-extrabold text-xs shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 flex-shrink-0 cursor-pointer"
           >
             <Plus className="w-4 h-4" />
             <span>Publish Campus Event</span>
@@ -119,10 +119,10 @@ export const EventsPage: React.FC = () => {
           <button
             key={cat}
             onClick={() => setSelectedCategory(cat)}
-            className={`px-3.5 py-1.5 rounded-xl font-medium whitespace-nowrap transition ${
+            className={`px-4 py-1.5 rounded-full font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
               selectedCategory === cat
-                ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-sm'
-                : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-slate-800 hover:border-slate-300'
+                ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-md scale-105'
+                : 'glass-card text-slate-600 dark:text-slate-400 hover:text-orange-600 hover:border-orange-400'
             }`}
           >
             {cat}
@@ -136,36 +136,36 @@ export const EventsPage: React.FC = () => {
           Loading campus fests and events...
         </div>
       ) : events.length === 0 ? (
-        <div className="p-12 text-center rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+        <div className="p-12 text-center rounded-3xl glass-card space-y-2">
           <CalendarDays className="w-10 h-10 text-slate-400 mx-auto" />
           <h3 className="text-base font-bold text-slate-900 dark:text-white">No events found</h3>
           <p className="text-xs text-slate-500">Check back soon or publish an event for your club.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {events.map((ev) => (
             <div
               key={ev.id}
-              className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition"
+              className="rounded-3xl glass-card glass-card-hover border border-slate-200/80 dark:border-white/10 overflow-hidden flex flex-col justify-between group"
             >
               <div>
-                {/* Banner image */}
+                {/* Banner image with hover zoom */}
                 {ev.banner_url ? (
-                  <div className="h-44 overflow-hidden relative">
+                  <div className="h-48 overflow-hidden relative">
                     <img
                       src={ev.banner_url}
                       alt={ev.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute top-3 left-3">
-                      <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                      <span className="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-slate-900/80 text-white backdrop-blur-md border border-white/20">
                         {ev.category}
                       </span>
                     </div>
                   </div>
                 ) : (
-                  <div className="h-24 bg-gradient-to-r from-orange-400 to-rose-500 relative p-4 flex items-start justify-between">
-                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-black/30 text-white backdrop-blur-md">
+                  <div className="h-28 bg-gradient-to-r from-orange-500 via-rose-500 to-pink-500 relative p-4 flex items-start justify-between">
+                    <span className="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-black/40 text-white backdrop-blur-md border border-white/20">
                       {ev.category}
                     </span>
                   </div>

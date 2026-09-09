@@ -98,7 +98,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({ onPostCreated, onCance
   };
 
   return (
-    <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+    <div className="p-6 rounded-3xl glass-card transition-all duration-300 shadow-xl border border-slate-200/80 dark:border-white/10">
       <div className="flex items-center gap-3 mb-4">
         <Avatar
           src={isAnonymous ? null : user?.avatar_url}
@@ -107,11 +107,15 @@ export const PostCreator: React.FC<PostCreatorProps> = ({ onPostCreated, onCance
           isVerified={!isAnonymous && user?.verification_status === 'VERIFIED'}
         />
         <div>
-          <h4 className="text-xs font-bold text-slate-900 dark:text-white">
-            {isAnonymous ? 'Posting Anonymously' : `Create a Post as ${user?.full_name || 'Student'}`}
+          <h4 className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+            {isAnonymous ? (
+              <span className="text-purple-600 dark:text-purple-400">Posting Anonymously 🎭</span>
+            ) : (
+              <span>Create a Post as {user?.full_name || 'Student'}</span>
+            )}
           </h4>
-          <p className="text-[11px] text-slate-400">
-            {isCampusOnly ? `Visible only to ${user?.college?.short_code || 'My Campus'}` : 'Broadcasted across all connected colleges'}
+          <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
+            {isCampusOnly ? `🔒 Visible strictly to ${user?.college?.short_code || 'My Campus'}` : '🌐 Broadcasted across all connected colleges'}
           </p>
         </div>
       </div>
@@ -120,35 +124,35 @@ export const PostCreator: React.FC<PostCreatorProps> = ({ onPostCreated, onCance
         {/* Title */}
         <input
           type="text"
-          placeholder="Title (e.g., Looking for Hackathon Teammates, Exam Prep Notes, Campus Fest Update)"
+          placeholder="Title (e.g. Looking for TreeHacks Teammates, CS Capstone Partner, Fest Ticket)"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
-          className="w-full px-3.5 py-2 text-xs sm:text-sm font-semibold bg-slate-50 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700 focus:border-brand-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none transition"
+          className="w-full px-4 py-2.5 text-xs sm:text-sm font-bold bg-slate-50/90 dark:bg-slate-800/60 rounded-2xl border border-slate-200/70 dark:border-white/10 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:bg-white dark:focus:bg-slate-900 focus:outline-none transition-all duration-300"
         />
 
         {/* Content */}
         <textarea
           rows={3}
-          placeholder="What's on your mind? Share study resources, ask questions, or announce campus projects..."
+          placeholder="Share study resources, upcoming campus events, or ask questions to verified peers..."
           value={content}
           onChange={(e) => setContent(e.target.value)}
           required
-          className="w-full px-3.5 py-2 text-xs sm:text-sm bg-slate-50 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700 focus:border-brand-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none transition"
+          className="w-full px-4 py-3 text-xs sm:text-sm bg-slate-50/90 dark:bg-slate-800/60 rounded-2xl border border-slate-200/70 dark:border-white/10 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:bg-white dark:focus:bg-slate-900 focus:outline-none transition-all duration-300"
         />
 
         {/* Poll Builder View */}
         {isPoll && (
-          <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/80 space-y-2.5">
+          <div className="p-4 rounded-2xl bg-slate-50/90 dark:bg-slate-800/60 border border-brand-500/30 space-y-3 animate-in fade-in">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                <BarChart2 className="w-3.5 h-3.5 text-brand-500" />
+              <span className="text-xs font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
+                <BarChart2 className="w-4 h-4 text-brand-500" />
                 Poll Setup
               </span>
               <button
                 type="button"
                 onClick={() => setIsPoll(false)}
-                className="text-[11px] text-rose-500 hover:underline"
+                className="text-[11px] text-rose-500 hover:underline font-semibold"
               >
                 Remove Poll
               </button>
@@ -159,10 +163,10 @@ export const PostCreator: React.FC<PostCreatorProps> = ({ onPostCreated, onCance
               placeholder="Ask a question..."
               value={pollQuestion}
               onChange={(e) => setPollQuestion(e.target.value)}
-              className="w-full px-3 py-1.5 text-xs bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-none"
+              className="w-full px-3.5 py-2 text-xs bg-white dark:bg-slate-900 rounded-xl border border-slate-200/80 dark:border-white/10 focus:outline-none focus:border-brand-500"
             />
 
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               {pollOptions.map((opt, idx) => (
                 <div key={idx} className="flex items-center gap-2">
                   <input
@@ -174,13 +178,13 @@ export const PostCreator: React.FC<PostCreatorProps> = ({ onPostCreated, onCance
                       copy[idx] = e.target.value;
                       setPollOptions(copy);
                     }}
-                    className="flex-1 px-3 py-1.5 text-xs bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-none"
+                    className="flex-1 px-3.5 py-2 text-xs bg-white dark:bg-slate-900 rounded-xl border border-slate-200/80 dark:border-white/10 focus:outline-none focus:border-brand-500"
                   />
                   {pollOptions.length > 2 && (
                     <button
                       type="button"
                       onClick={() => handleRemovePollOption(idx)}
-                      className="text-slate-400 hover:text-rose-500 p-1"
+                      className="text-slate-400 hover:text-rose-500 p-1.5 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/30 transition"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                     </button>
@@ -193,7 +197,7 @@ export const PostCreator: React.FC<PostCreatorProps> = ({ onPostCreated, onCance
               <button
                 type="button"
                 onClick={handleAddPollOption}
-                className="text-xs font-semibold text-brand-600 flex items-center gap-1 hover:underline pt-1"
+                className="text-xs font-bold text-brand-600 dark:text-brand-400 flex items-center gap-1 hover:underline pt-1"
               >
                 <Plus className="w-3.5 h-3.5" /> Add Option
               </button>
@@ -203,12 +207,12 @@ export const PostCreator: React.FC<PostCreatorProps> = ({ onPostCreated, onCance
 
         {/* Attachment preview */}
         {attachmentUrl && (
-          <div className="relative rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 max-h-48 w-fit">
-            <img src={attachmentUrl} alt="Attached" className="h-48 object-cover rounded-xl" />
+          <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 max-h-48 w-fit shadow-md">
+            <img src={attachmentUrl} alt="Attached" className="h-48 object-cover rounded-2xl" />
             <button
               type="button"
               onClick={() => setAttachmentUrl('')}
-              className="absolute top-2 right-2 p-1 rounded-full bg-slate-900/70 text-white hover:bg-slate-900"
+              className="absolute top-2 right-2 p-1.5 rounded-full bg-slate-900/80 text-white hover:bg-slate-900 transition"
             >
               <Trash2 className="w-3.5 h-3.5" />
             </button>
@@ -216,13 +220,13 @@ export const PostCreator: React.FC<PostCreatorProps> = ({ onPostCreated, onCance
         )}
 
         {/* Controls row */}
-        <div className="pt-2 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 dark:border-slate-800/80 text-xs">
+        <div className="pt-3 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 dark:border-white/10 text-xs">
           {/* Category Select & Feature Toggles */}
           <div className="flex flex-wrap items-center gap-2">
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value as any)}
-              className="px-2.5 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-none focus:ring-1 focus:ring-brand-500 text-xs font-medium"
+              className="px-3 py-1.5 rounded-xl bg-slate-100/90 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200 border-none focus:ring-2 focus:ring-brand-500/30 text-xs font-bold"
             >
               {categories.map((c) => (
                 <option key={c} value={c}>{c}</option>
@@ -233,20 +237,20 @@ export const PostCreator: React.FC<PostCreatorProps> = ({ onPostCreated, onCance
             <button
               type="button"
               onClick={() => setIsPoll(!isPoll)}
-              className={`p-1.5 rounded-lg border transition flex items-center gap-1 ${
+              className={`p-2 rounded-xl border transition-all duration-200 flex items-center gap-1.5 font-semibold ${
                 isPoll
-                  ? 'bg-brand-50 border-brand-300 text-brand-600 dark:bg-brand-950 dark:border-brand-800'
-                  : 'border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-50'
+                  ? 'bg-brand-50 border-brand-400 text-brand-600 dark:bg-brand-950 dark:border-brand-700'
+                  : 'border-slate-200/80 dark:border-white/10 text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/80'
               }`}
               title="Add Poll"
             >
-              <BarChart2 className="w-3.5 h-3.5" />
+              <BarChart2 className="w-4 h-4" />
               <span className="hidden sm:inline">Poll</span>
             </button>
 
             {/* Image Trigger */}
-            <label className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-50 cursor-pointer flex items-center gap-1">
-              <ImageIcon className="w-3.5 h-3.5" />
+            <label className="p-2 rounded-xl border border-slate-200/80 dark:border-white/10 text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/80 cursor-pointer flex items-center gap-1.5 font-semibold transition-all">
+              <ImageIcon className="w-4 h-4" />
               <span className="hidden sm:inline">{uploading ? 'Uploading...' : 'Photo'}</span>
               <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
             </label>
@@ -255,10 +259,10 @@ export const PostCreator: React.FC<PostCreatorProps> = ({ onPostCreated, onCance
             <button
               type="button"
               onClick={() => setIsCampusOnly(!isCampusOnly)}
-              className={`px-2 py-1 rounded-lg text-xs font-medium border flex items-center gap-1 transition ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold border flex items-center gap-1.5 transition-all ${
                 isCampusOnly
-                  ? 'bg-indigo-50 border-indigo-300 text-indigo-700 dark:bg-indigo-950 dark:border-indigo-800 dark:text-indigo-300 font-semibold'
-                  : 'border-slate-200 dark:border-slate-800 text-slate-500'
+                  ? 'bg-indigo-50 border-indigo-300 text-indigo-700 dark:bg-indigo-950/60 dark:border-indigo-700 dark:text-indigo-300'
+                  : 'border-slate-200/80 dark:border-white/10 text-slate-500 hover:bg-slate-100/60'
               }`}
             >
               <Building className="w-3.5 h-3.5" />
@@ -269,10 +273,10 @@ export const PostCreator: React.FC<PostCreatorProps> = ({ onPostCreated, onCance
             <button
               type="button"
               onClick={() => setIsAnonymous(!isAnonymous)}
-              className={`px-2 py-1 rounded-lg text-xs font-medium border flex items-center gap-1 transition ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold border flex items-center gap-1.5 transition-all ${
                 isAnonymous
-                  ? 'bg-purple-50 border-purple-300 text-purple-700 dark:bg-purple-950 dark:border-purple-800 dark:text-purple-300 font-semibold'
-                  : 'border-slate-200 dark:border-slate-800 text-slate-500'
+                  ? 'bg-purple-50 border-purple-300 text-purple-700 dark:bg-purple-950/60 dark:border-purple-700 dark:text-purple-300'
+                  : 'border-slate-200/80 dark:border-white/10 text-slate-500 hover:bg-slate-100/60'
               }`}
             >
               <EyeOff className="w-3.5 h-3.5" />
@@ -280,13 +284,13 @@ export const PostCreator: React.FC<PostCreatorProps> = ({ onPostCreated, onCance
             </button>
           </div>
 
-          {/* Submit Button */}
+          {/* Submit Button with Shimmer */}
           <div className="flex items-center gap-2">
             {onCancel && (
               <button
                 type="button"
                 onClick={onCancel}
-                className="px-3 py-1.5 text-slate-500 hover:bg-slate-100 rounded-xl transition"
+                className="px-3.5 py-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800/60 rounded-xl font-semibold transition"
               >
                 Cancel
               </button>
@@ -294,9 +298,9 @@ export const PostCreator: React.FC<PostCreatorProps> = ({ onPostCreated, onCance
             <button
               type="submit"
               disabled={loading || !title.trim() || !content.trim()}
-              className="px-4 py-1.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl shadow-sm disabled:opacity-50 transition flex items-center gap-1.5"
+              className="luxury-shimmer-btn px-5 py-2 bg-gradient-to-r from-brand-600 via-indigo-600 to-violet-600 hover:from-brand-500 hover:to-violet-500 text-white font-bold rounded-2xl shadow-lg shadow-brand-500/25 disabled:opacity-50 transition-all duration-200 hover:scale-105 flex items-center gap-2 cursor-pointer"
             >
-              <Send className="w-3.5 h-3.5" />
+              <Send className="w-4 h-4" />
               <span>Publish</span>
             </button>
           </div>

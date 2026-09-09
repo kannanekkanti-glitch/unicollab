@@ -49,14 +49,14 @@ export const HomeFeedPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Feed Tabs Bar */}
-      <div className="p-2 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center justify-between gap-2 overflow-x-auto">
+      <div className="p-2 rounded-2xl glass-card flex items-center justify-between gap-2 overflow-x-auto shadow-md border border-slate-200/80 dark:border-white/10">
         <div className="flex items-center gap-1.5 min-w-max">
           <button
             onClick={() => setFeedType('all')}
-            className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold transition ${
+            className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
               feedType === 'all'
-                ? 'bg-brand-50 text-brand-700 dark:bg-brand-950 dark:text-brand-300'
-                : 'text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800'
+                ? 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-md shadow-brand-500/25 scale-[1.02]'
+                : 'text-slate-600 hover:bg-slate-100/80 dark:text-slate-400 dark:hover:bg-slate-800/60'
             }`}
           >
             <Globe className="w-3.5 h-3.5" />
@@ -65,10 +65,10 @@ export const HomeFeedPage: React.FC = () => {
 
           <button
             onClick={() => setFeedType('campus')}
-            className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold transition ${
+            className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
               feedType === 'campus'
-                ? 'bg-brand-50 text-brand-700 dark:bg-brand-950 dark:text-brand-300'
-                : 'text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800'
+                ? 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-md shadow-brand-500/25 scale-[1.02]'
+                : 'text-slate-600 hover:bg-slate-100/80 dark:text-slate-400 dark:hover:bg-slate-800/60'
             }`}
           >
             <Building className="w-3.5 h-3.5" />
@@ -77,32 +77,32 @@ export const HomeFeedPage: React.FC = () => {
 
           <button
             onClick={() => setFeedType('trending')}
-            className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold transition ${
+            className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
               feedType === 'trending'
-                ? 'bg-brand-50 text-brand-700 dark:bg-brand-950 dark:text-brand-300'
-                : 'text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800'
+                ? 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-md shadow-brand-500/25 scale-[1.02]'
+                : 'text-slate-600 hover:bg-slate-100/80 dark:text-slate-400 dark:hover:bg-slate-800/60'
             }`}
           >
-            <Flame className="w-3.5 h-3.5 text-orange-500" />
+            <Flame className="w-3.5 h-3.5 text-orange-400 animate-bounce" style={{ animationDuration: '2s' }} />
             <span>Trending</span>
           </button>
 
           <button
             onClick={() => setFeedType('announcements')}
-            className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold transition ${
+            className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
               feedType === 'announcements'
-                ? 'bg-brand-50 text-brand-700 dark:bg-brand-950 dark:text-brand-300'
-                : 'text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800'
+                ? 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-md shadow-brand-500/25 scale-[1.02]'
+                : 'text-slate-600 hover:bg-slate-100/80 dark:text-slate-400 dark:hover:bg-slate-800/60'
             }`}
           >
-            <Megaphone className="w-3.5 h-3.5 text-brand-500" />
+            <Megaphone className="w-3.5 h-3.5" />
             <span>Official Alerts</span>
           </button>
         </div>
 
         <button
           onClick={fetchPosts}
-          className="p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition"
+          className="p-2 rounded-xl text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200 hover:rotate-180"
           title="Refresh feed"
         >
           <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
@@ -111,17 +111,17 @@ export const HomeFeedPage: React.FC = () => {
 
       {/* Category Pills Bar */}
       <div className="flex items-center gap-2 overflow-x-auto pb-1 text-xs">
-        <span className="text-slate-400 font-semibold text-[11px] flex items-center gap-1 pl-1">
-          <Filter className="w-3 h-3" /> Topics:
+        <span className="text-slate-400 font-bold text-[11px] flex items-center gap-1 pl-1">
+          <Filter className="w-3 h-3" /> Filter:
         </span>
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setSelectedCategory(cat)}
-            className={`px-3 py-1 rounded-full whitespace-nowrap transition font-medium text-xs ${
+            className={`px-3.5 py-1.5 rounded-full whitespace-nowrap transition-all duration-200 font-bold text-xs cursor-pointer ${
               selectedCategory === cat
-                ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-sm'
-                : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border border-slate-200/80 dark:border-slate-800 hover:border-slate-300'
+                ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-md scale-105'
+                : 'glass-card text-slate-600 dark:text-slate-400 hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-300'
             }`}
           >
             {cat}
@@ -140,18 +140,18 @@ export const HomeFeedPage: React.FC = () => {
           ) : (
             <div
               onClick={() => setShowCreator(true)}
-              className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center justify-between gap-3 cursor-pointer hover:border-brand-300 transition"
+              className="p-4 sm:p-5 rounded-3xl glass-card flex items-center justify-between gap-3 cursor-pointer hover:border-brand-500/40 transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 group"
             >
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-brand-100 dark:bg-brand-950 flex items-center justify-center text-brand-600 font-bold text-xs">
+                <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-600 flex items-center justify-center text-white font-black text-sm shadow-md shadow-brand-500/20 group-hover:scale-110 transition-transform">
                   {user.full_name[0]}
                 </div>
-                <span className="text-xs text-slate-400 font-medium">
-                  Have an announcement, exam question, or project idea? Click to post...
+                <span className="text-xs sm:text-sm text-slate-400 font-medium group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors">
+                  Have an announcement, capstone idea, or fest question? Click to post...
                 </span>
               </div>
-              <button className="px-3 py-1.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold shadow-sm flex items-center gap-1 transition">
-                <Plus className="w-3.5 h-3.5" />
+              <button className="luxury-shimmer-btn px-4 py-2 rounded-2xl bg-gradient-to-r from-brand-600 to-indigo-600 text-white text-xs font-bold shadow-md shadow-brand-500/25 flex items-center gap-1.5 transition-transform group-hover:scale-105">
+                <Plus className="w-4 h-4" />
                 <span>Post</span>
               </button>
             </div>

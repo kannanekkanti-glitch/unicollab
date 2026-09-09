@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  Shield, Users, CheckCircle2, XCircle, AlertTriangle, 
+  Shield, ShieldCheck, Users, CheckCircle2, XCircle, AlertTriangle, 
   Trash2, Eye, Ban, Sparkles, Building, BarChart3 
 } from 'lucide-react';
 import { AdminMetrics, User, Report } from '../types';
@@ -81,55 +81,56 @@ export const AdminDashboardPage: React.FC = () => {
         </p>
       </div>
 
-      {/* Metrics Cards Grid */}
+      {/* Platform Stats Grid */}
       {metrics && (
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-1">
-            <span className="text-xs text-slate-400 font-semibold">Total Students</span>
-            <p className="text-2xl font-black text-slate-900 dark:text-white">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="p-5 rounded-3xl glass-card glass-card-hover space-y-1.5 border border-slate-200/80 dark:border-white/10">
+            <span className="text-xs text-slate-400 font-bold uppercase tracking-wider">Total Campus Network</span>
+            <p className="text-3xl font-black luxury-gradient-text tracking-tight">
               {metrics.total_users}
             </p>
-            <span className="text-[11px] text-emerald-600 font-medium">
-              {metrics.verified_users} Verified Badges
+            <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              {metrics.verified_users} Verified Students
             </span>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-1">
-            <span className="text-xs text-slate-400 font-semibold">Pending Verifications</span>
-            <p className="text-2xl font-black text-amber-500">
+          <div className="p-5 rounded-3xl glass-card glass-card-hover space-y-1.5 border border-slate-200/80 dark:border-white/10">
+            <span className="text-xs text-amber-500 dark:text-amber-400 font-bold uppercase tracking-wider">ID Reviews Needed</span>
+            <p className="text-3xl font-black text-amber-500 dark:text-amber-400 tracking-tight">
               {metrics.pending_verifications}
             </p>
-            <span className="text-[11px] text-slate-400">Needs ID card review</span>
+            <span className="text-[11px] text-slate-400 font-medium">Pending ID card queue</span>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-1">
-            <span className="text-xs text-slate-400 font-semibold">Campus Posts</span>
-            <p className="text-2xl font-black text-slate-900 dark:text-white">
+          <div className="p-5 rounded-3xl glass-card glass-card-hover space-y-1.5 border border-slate-200/80 dark:border-white/10">
+            <span className="text-xs text-slate-400 font-bold uppercase tracking-wider">Campus Discussions</span>
+            <p className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
               {metrics.total_posts}
             </p>
-            <span className="text-[11px] text-brand-600 font-medium">
-              {metrics.total_projects} Active Projects
+            <span className="text-[11px] text-brand-600 dark:text-brand-400 font-semibold">
+              {metrics.total_projects} Active Capstones
             </span>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-1">
-            <span className="text-xs text-slate-400 font-semibold">Pending Reports</span>
-            <p className="text-2xl font-black text-rose-500">
+          <div className="p-5 rounded-3xl glass-card glass-card-hover space-y-1.5 border border-slate-200/80 dark:border-white/10">
+            <span className="text-xs text-rose-500 font-bold uppercase tracking-wider">Flagged Content</span>
+            <p className="text-3xl font-black text-rose-500 tracking-tight">
               {metrics.pending_reports}
             </p>
-            <span className="text-[11px] text-slate-400">Flagged content</span>
+            <span className="text-[11px] text-slate-400 font-medium">Reported safety items</span>
           </div>
         </div>
       )}
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2">
+      <div className="flex items-center gap-3 border-b border-slate-200/80 dark:border-white/10 pb-3">
         <button
           onClick={() => setActiveTab('verifications')}
-          className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold transition ${
+          className={`flex items-center gap-2 px-5 py-2.5 rounded-2xl text-xs font-bold transition-all duration-200 cursor-pointer ${
             activeTab === 'verifications'
-              ? 'bg-amber-50 text-amber-800 dark:bg-amber-950 dark:text-amber-300'
-              : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
+              ? 'bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30 shadow-md shadow-amber-500/10 scale-[1.02]'
+              : 'glass-card text-slate-500 hover:text-slate-900 dark:hover:text-white'
           }`}
         >
           <Shield className="w-4 h-4" />
@@ -138,10 +139,10 @@ export const AdminDashboardPage: React.FC = () => {
 
         <button
           onClick={() => setActiveTab('reports')}
-          className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold transition ${
+          className={`flex items-center gap-2 px-5 py-2.5 rounded-2xl text-xs font-bold transition-all duration-200 cursor-pointer ${
             activeTab === 'reports'
-              ? 'bg-rose-50 text-rose-800 dark:bg-rose-950 dark:text-rose-300'
-              : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
+              ? 'bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-500/30 shadow-md shadow-rose-500/10 scale-[1.02]'
+              : 'glass-card text-slate-500 hover:text-slate-900 dark:hover:text-white'
           }`}
         >
           <AlertTriangle className="w-4 h-4" />
